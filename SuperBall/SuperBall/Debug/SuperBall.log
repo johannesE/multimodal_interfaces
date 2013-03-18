@@ -1,4 +1,4 @@
-﻿Build started 18.03.2013 10:51:17.
+﻿Build started 18.03.2013 11:32:09.
      1>Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Diamond.cpp SuperBall.cpp
@@ -8,9 +8,9 @@
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.lib" /MACHINE:X86 Debug\Diamond.obj
          Debug\SuperBall.obj
-     1>LINK : fatal error LNK1207: incompatible PDB format in 'C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.pdb'; delete and rebuild
-     1>Done Building Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Build target(s)) -- FAILED.
+         SuperBall.vcxproj -> C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.exe
+     1>Done Building Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:02.52
+Time Elapsed 00:00:00.40
