@@ -1,0 +1,17 @@
+﻿Build started 17.03.2013 17:57:15.
+     1>Project "C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall\SuperBall.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\SuperBall.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         SuperBall.vcxproj -> C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\Debug\SuperBall.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\SuperBall.unsuccessfulbuild".
+         Touching "Debug\SuperBall.lastbuildstate".
+     1>Done Building Project "C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall\SuperBall.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.42
