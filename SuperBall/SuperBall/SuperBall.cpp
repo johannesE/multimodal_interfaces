@@ -11,7 +11,7 @@
 
 
 
-//Global cariables:
+//Global variables:
 
 GLsizei MOUSEx=0, MOUSEy=0;
 GLfloat SIDE=200;
