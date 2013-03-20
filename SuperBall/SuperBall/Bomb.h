@@ -8,6 +8,7 @@ class Bomb :
 public:
 	Bomb(int x, int y);
 	~Bomb(void);
+	void draw();
 
 
 private:

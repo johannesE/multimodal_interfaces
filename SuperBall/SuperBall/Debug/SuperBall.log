@@ -1,16 +1,16 @@
-﻿Build started 18.03.2013 11:32:09.
+﻿Build started 20.03.2013 14:49:06.
      1>Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Diamond.cpp SuperBall.cpp
-         SuperBall.cpp
-         Diamond.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Bomb.cpp Objects.cpp
+         Objects.cpp
+         Bomb.cpp
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.cpp(5): error C2011: 'Bomb' : 'class' type redefinition
+                 c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.h(5) : see declaration of 'Bomb'
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.cpp(16): error C2027: use of undefined type 'Bomb'
+                 c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.h(5) : see declaration of 'Bomb'
          Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.lib" /MACHINE:X86 Debug\Diamond.obj
-         Debug\SuperBall.obj
-         SuperBall.vcxproj -> C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.exe
-     1>Done Building Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.40
+Time Elapsed 00:00:02.63

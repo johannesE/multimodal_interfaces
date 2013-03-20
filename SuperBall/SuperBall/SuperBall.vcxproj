@@ -66,11 +66,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Diamond.h" />
+    <ClInclude Include="Objects.h" />
     <ClInclude Include="SuperBall.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Diamond.cpp" />
+    <ClCompile Include="Objects.cpp" />
     <ClCompile Include="SuperBall.cpp" />
   </ItemGroup>
   <ItemGroup>
