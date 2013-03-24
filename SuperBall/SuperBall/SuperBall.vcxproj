@@ -40,7 +40,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\libraries\glut-3.7.6-bin;$(IncludePath)</IncludePath>
-    <ReferencePath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;$(ReferencePath)</ReferencePath>
+    <ReferencePath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\libraries\glut-3.7.6-bin;$(ReferencePath)</ReferencePath>
     <LibraryPath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\libraries\glut-3.7.6-bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
