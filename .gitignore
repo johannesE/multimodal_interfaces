@@ -72,6 +72,12 @@ ipch/
 *.ncb
 *.opensdf
 *.sdf
+*.ipch
+*.pdb
+*.ilk
+*.idb
+*.obj
+*.tlog
 
 # Visual Studio profiler
 *.psess
