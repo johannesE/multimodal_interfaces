@@ -3,52 +3,31 @@
 
 
 
-Diamond::Diamond()
-{
-	this->x=150;
-	this->y=100;
-}
+Diamond::Diamond() : SpaceObject() { 	width=26;height=55;buildThePointsCountingForTheIntersection(); }
 
-Diamond::Diamond(int x, int y)
-{
-	this->x=x;
-	this->y=y;
-}
+Diamond::Diamond(float x, float y) : SpaceObject(x,y) {	width=26;height=55;buildThePointsCountingForTheIntersection(); }
+
+Diamond::Diamond(float x, float y, double scoreForThePlayer) : SpaceObject(x,y,scoreForThePlayer) {	width=26;height=55;buildThePointsCountingForTheIntersection(); }
+
 
 
 Diamond::~Diamond(void)
 {
-
+	
 }
 
 
-void Diamond::setNewPos(int x, int y)
-{
-	this->x=x;
-	this->y=y;
-}
-
-
-int Diamond::posX()
-{
-	return this->x;
-}
-int Diamond::posY()
-{
-	return this->y;
-}
 
 void Diamond::drawIt() 
 {
-	int width=26;
-	int height=55;
+
 
 
     glBegin(GL_TRIANGLES);
 
 		GLfloat color[3] = {0.77647,1,0.94902};
 		glColor3fv(color);
-		glVertex3f(x-width/2, y ,0);
+		glVertex3f(SpaceObject::x-width/2, y ,0);
 		glVertex3f(x-width/2 + width/6, y ,0);
 		glVertex3f(x, y-height/2 ,0);
 
@@ -95,4 +74,37 @@ void Diamond::drawIt()
 		glVertex3f(x, y+height/2 ,0);
 
     glEnd();
+}
+
+
+//God save our gratest Queen, la la la la la la la la la la
+
+void Diamond::buildThePointsCountingForTheIntersection()
+{
+	float width_6 = width/6.0f;
+	float height_6 = height/6.0f;
+
+	float width_4 = width/4.0f;
+	float height_4 = height/4.0f;
+
+	pointsCountingForAnIntersection.push_back( Point2D(x,y) );
+
+	pointsCountingForAnIntersection.push_back( Point2D(x-width/2,y) );
+	pointsCountingForAnIntersection.push_back( Point2D(x-2*width_6,y-height_6) );
+	pointsCountingForAnIntersection.push_back( Point2D(x-width_6,y-2*height_6) );
+	pointsCountingForAnIntersection.push_back( Point2D(x,y-height/2) );
+	pointsCountingForAnIntersection.push_back( Point2D(x+width_6,y-2*height_6) );
+	pointsCountingForAnIntersection.push_back( Point2D(x+2*width_6,y-height_6) );
+	pointsCountingForAnIntersection.push_back( Point2D(x+width/2,y) );
+	pointsCountingForAnIntersection.push_back( Point2D(x+2*width_6,y+height_6) );
+	pointsCountingForAnIntersection.push_back( Point2D(x+width_6,y+2*height_6) );
+	pointsCountingForAnIntersection.push_back( Point2D(x,y+height/2) );
+	pointsCountingForAnIntersection.push_back( Point2D(x-width_6,y+2*height_6) );
+	pointsCountingForAnIntersection.push_back( Point2D(x-2*width_6,y+height_6) );
+
+	pointsCountingForAnIntersection.push_back( Point2D(x-width_4,y-height_4) );
+	pointsCountingForAnIntersection.push_back( Point2D(x+width_4,y-height_4) );
+	pointsCountingForAnIntersection.push_back( Point2D(x+width_4,y+height_4) );
+	pointsCountingForAnIntersection.push_back( Point2D(x-width_4,y+height_4) );
+
 }

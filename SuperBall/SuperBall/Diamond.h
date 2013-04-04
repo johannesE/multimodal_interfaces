@@ -1,18 +1,25 @@
+
+#include "SpaceObject.h"
 #pragma once
-class Diamond
+
+
+
+class Diamond:public SpaceObject
 {
 
 public:
 	Diamond::Diamond();
-	Diamond(int x, int y);
+	Diamond(float x, float y);
+	Diamond(float x, float y, double scoreForThePlayer);
 	~Diamond(void);
-	int posX();
-	int posY();
-	void setNewPos(int x, int y);
 	void Diamond::drawIt();  //called from the main loop
+	
 
+	
+	
 private:
-	int x,y;
+	float width, height;
+	void buildThePointsCountingForTheIntersection();
 	
 };
 

@@ -19,14 +19,12 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -39,17 +37,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\libraries\glut-3.7.6-bin;$(IncludePath)</IncludePath>
-    <ReferencePath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\libraries\glut-3.7.6-bin;$(ReferencePath)</ReferencePath>
-    <LibraryPath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\libraries\glut-3.7.6-bin;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Program Files\Phidgets;$(IncludePath)</IncludePath>
+    <ReferencePath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Program Files\Phidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>C:\Program Files\Phidgets\Phidget21.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -66,15 +66,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Diamond.h" />
-    <ClInclude Include="Objects.h" />
+    <ClInclude Include="GamesContents.h" />
+    <ClInclude Include="Mine.h" />
+    <ClInclude Include="PhidgetManager.h" />
+    <ClInclude Include="Point2D.h" />
+    <ClInclude Include="SpaceObject.h" />
     <ClInclude Include="SuperBall.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Diamond.cpp" />
-    <ClCompile Include="Objects.cpp" />
+    <ClCompile Include="GamesContents.cpp" />
+    <ClCompile Include="Mine.cpp" />
+    <ClCompile Include="PhidgetManager.cpp" />
+    <ClCompile Include="Point2D.cpp" />
+    <ClCompile Include="SpaceObject.cpp" />
     <ClCompile Include="SuperBall.cpp" />
   </ItemGroup>
   <ItemGroup>
