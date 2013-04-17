@@ -1,15 +1,16 @@
-﻿Build started 17.04.2013 17:47:12.
+﻿Build started 17.04.2013 18:04:11.
      1>Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files\Phidgets" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Diamond.cpp GamesContents.cpp Mine.cpp PhidgetManager.cpp Point2D.cpp SpaceObject.cpp SuperBall.cpp
          SuperBall.cpp
-     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\superball.cpp(12): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\superball.cpp(438): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\superball.cpp(644): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : see declaration of 'scanf'
          SpaceObject.cpp
          Point2D.cpp
          PhidgetManager.cpp
-     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\phidgetmanager.cpp(3): fatal error C1083: Cannot open include file: 'phidget21.h': No such file or directory
          Mine.cpp
-     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\mine.cpp(3): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
          GamesContents.cpp
      1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(19): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(42): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
@@ -18,10 +19,9 @@
      1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(93): error C2676: binary '==' : 'const type_info' does not define this operator or a conversion to a type acceptable to the predefined operator
      1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(110): error C2676: binary '==' : 'const type_info' does not define this operator or a conversion to a type acceptable to the predefined operator
          Diamond.cpp
-     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\diamond.cpp(2): fatal error C1083: Cannot open include file: 'glut.h': No such file or directory
          Generating Code...
      1>Done Building Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Rebuild target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:03.26
+Time Elapsed 00:00:03.05
