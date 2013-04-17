@@ -1,16 +1,12 @@
-﻿Build started 20.03.2013 14:49:06.
+﻿Build started 24.03.2013 21:25:40.
      1>Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Bomb.cpp Objects.cpp
-         Objects.cpp
+         C:\Program Files (x86)\Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Bomb.cpp
          Bomb.cpp
      1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.cpp(5): error C2011: 'Bomb' : 'class' type redefinition
                  c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.h(5) : see declaration of 'Bomb'
-     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.cpp(16): error C2027: use of undefined type 'Bomb'
-                 c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\bomb.h(5) : see declaration of 'Bomb'
-         Generating Code...
      1>Done Building Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:02.63
+Time Elapsed 00:00:00.70
