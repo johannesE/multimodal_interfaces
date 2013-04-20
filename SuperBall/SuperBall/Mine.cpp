@@ -8,6 +8,7 @@
 
 #define PI2 6.283185307f
 #define one_tenth_PI 0.31141592654f
+GLuint bombtexture;
 
 
 
@@ -16,6 +17,8 @@ Mine::Mine(float x, float y) : SpaceObject(x,y,0)
 	buildThePointsCountingForTheIntersection();
 	randMovementVector = Vector2D(rand(), rand());
 	randMovementVector *= normOfTheRandMovementVector/Magnitude(randMovementVector);
+	glEnable( GL_TEXTURE_2D );
+	bombtexture = LoadTextureRAW( "texture.raw", TRUE );
 }
 
 Mine::Mine(float x, float y, double scoreForThePlayer) : SpaceObject(x,y,scoreForThePlayer) 
@@ -23,11 +26,14 @@ Mine::Mine(float x, float y, double scoreForThePlayer) : SpaceObject(x,y,scoreFo
 	buildThePointsCountingForTheIntersection(); 
 	randMovementVector = Vector2D(rand(), rand());
 	randMovementVector *= normOfTheRandMovementVector/Magnitude(randMovementVector);
+	glEnable( GL_TEXTURE_2D );
+	bombtexture = LoadTextureRAW( "bomb.raw", TRUE );
 }
 
 
 Mine::~Mine(void)
 {
+//	FreeTexture( bombtexture );
 }
 
 // load a 256x256 RGB .RAW file as a texture
@@ -43,9 +49,9 @@ GLuint LoadTextureRAW( const char * filename, int wrap )
     if ( file == NULL ) return 0;
 
     // allocate buffer
-    width = 256;
-    height = 256;
-    data = malloc( width * height * 3 );
+    width = 300;
+    height = 278;
+	data = malloc( width * height * 3 );
 
     // read texture data
     fread( data, width * height * 3, 1, file );
@@ -78,7 +84,7 @@ GLuint LoadTextureRAW( const char * filename, int wrap )
                        GL_RGB, GL_UNSIGNED_BYTE, data );
 
     // free buffer
-    free( data );
+    /free( data );
 
     return texture;
 }
@@ -86,6 +92,9 @@ GLuint LoadTextureRAW( const char * filename, int wrap )
 
 void Mine::drawIt()  //called from the main loop
 {
+	glEnable( GL_TEXTURE_2D );
+    glBindTexture( GL_TEXTURE_2D, bombtexture );
+
 
 	glBegin(GL_TRIANGLES);
 
