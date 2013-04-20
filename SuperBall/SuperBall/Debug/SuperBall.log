@@ -1,27 +1,31 @@
-﻿Build started 17.04.2013 3:30:22.
-     1>Project "C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 20.04.2013 14:12:59.
+     1>Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files\Phidgets" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Diamond.cpp GamesContents.cpp Mine.cpp PhidgetManager.cpp Point2D.cpp SpaceObject.cpp SuperBall.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files\Phidgets" /I"C:\Program Files\Phidgets\x86" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Diamond.cpp GamesContents.cpp Mine.cpp Point2D.cpp SpaceObject.cpp SuperBall.cpp
          SuperBall.cpp
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\superball.cpp(438): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\superball.cpp(438): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(909) : see declaration of 'itoa'
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\superball.cpp(644): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\superball.cpp(644): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : see declaration of 'scanf'
          SpaceObject.cpp
          Point2D.cpp
-         PhidgetManager.cpp
          Mine.cpp
          GamesContents.cpp
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(19): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(42): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(63): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(75): error C2676: binary '==' : 'const type_info' does not define this operator or a conversion to a type acceptable to the predefined operator
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(93): error C2676: binary '==' : 'const type_info' does not define this operator or a conversion to a type acceptable to the predefined operator
-     1>c:\users\telegin\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(110): error C2676: binary '==' : 'const type_info' does not define this operator or a conversion to a type acceptable to the predefined operator
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(20): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(43): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\telefonkabine\documents\github\multimodal_interfaces\superball\superball\gamescontents.cpp(64): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
          Diamond.cpp
          Generating Code...
-     1>Done Building Project "C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Rebuild target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.exe" /INCREMENTAL /NOLOGO "C:\Program Files\Phidgets\Phidget21.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.lib" /MACHINE:X86 Debug\Diamond.obj
+         Debug\GamesContents.obj
+         Debug\Mine.obj
+         Debug\Point2D.obj
+         Debug\SpaceObject.obj
+         Debug\SuperBall.obj
+         SuperBall.vcxproj -> C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\Debug\SuperBall.exe
+     1>Done Building Project "C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\SuperBall.vcxproj" (Rebuild target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:03.86
+Time Elapsed 00:00:03.29
