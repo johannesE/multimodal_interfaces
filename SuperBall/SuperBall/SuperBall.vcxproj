@@ -41,13 +41,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Program Files\Phidgets;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall;C:\Program Files\Phidgets\x86;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall;$(IncludePath)</IncludePath>
     <ReferencePath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;$(ReferencePath)</ReferencePath>
-    <LibraryPath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Program Files\Phidgets;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Program Files\Phidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Phidgets;C:\Program Files\Phidgets\x86;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -80,7 +80,6 @@
     <ClCompile Include="Diamond.cpp" />
     <ClCompile Include="GamesContents.cpp" />
     <ClCompile Include="Mine.cpp" />
-    <ClCompile Include="PhidgetManager.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="SpaceObject.cpp" />
     <ClCompile Include="SuperBall.cpp" />

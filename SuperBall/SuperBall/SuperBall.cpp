@@ -10,9 +10,9 @@
 #include <iostream>
 
 #include <glut.h>					// Override the definition of 'exit' in stdlib.h with that in glut.h. Place the stdlib.h line above the glut.h line in your code.
-#include <phidget21.h>	//for the Phidgets
+//#include <phidget21.h>	//for the Phidgets
 
-#include "PhidgetManager.h"
+//#include "PhidgetManager.h"
 
 #include <list>
 #include <typeinfo>
@@ -61,7 +61,7 @@ GLfloat openglClearColor[4] = {0.760784313,0.839215686,0.839215686,1.0};
 GLfloat bombsColor[3] = {0.0f, 0.0f, 0.0f};
 GLfloat colorOfTheScore[3] = {1.0f, 0.0078f, 0.41960784f};
 
-PhidgetManager* phidgetManag;
+//PhidgetManager* phidgetManag;
 GamesContents* gamesContents;
 
 float sensor1and2zeroLevel = 500;
@@ -552,7 +552,7 @@ void specialKeys(int key, int x, int y)
 			}
 		break;
 		case 27:   //Escape key
-			phidgetManag->close();
+			//phidgetManag->close();
 			exit(0);
 			break;
 		case GLUT_KEY_LEFT:
@@ -627,9 +627,9 @@ int main(int argc, char **argv)
 	screenWidth = glutGet(GLUT_WINDOW_WIDTH);//glutGet(GLUT_SCREEN_WIDTH);
 	screenHeight = glutGet(GLUT_WINDOW_HEIGHT);//glutGet(GLUT_SCREEN_HEIGHT);
 
-	phidgetManag = new PhidgetManager();
+	/*phidgetManag = new PhidgetManager();
 	phidgetManag->start();
-	
+	*/
 	
 
     try
