@@ -1,10 +1,7 @@
 #include "SpaceObject.h"
 #include <math.h>
 #include "glut.h"
-#include <windows.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <stdio.h>
+
 
 #pragma once
 
@@ -17,7 +14,7 @@ public:
 	Mine(float x, float y, double scoreForThePlayer);
 	~Mine(void);
 	void Mine::drawIt();  //called from the main loop
-	GLuint LoadTextureRAW( const char * filename, int wrap );
+	//GLuint LoadTextureRAW( const char * filename, int wrap );
 
 
 

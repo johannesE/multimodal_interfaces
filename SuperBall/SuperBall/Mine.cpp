@@ -1,14 +1,15 @@
 #include "Mine.h"
 #include <math.h>
 #include "glut.h"
-#include <windows.h>
+/*#include <windows.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <stdio.h>
+*/
 
 #define PI2 6.283185307f
 #define one_tenth_PI 0.31141592654f
-GLuint bombtexture;
+//GLuint bombtexture;
 
 
 
@@ -17,8 +18,8 @@ Mine::Mine(float x, float y) : SpaceObject(x,y,0)
 	buildThePointsCountingForTheIntersection();
 	randMovementVector = Vector2D(rand(), rand());
 	randMovementVector *= normOfTheRandMovementVector/Magnitude(randMovementVector);
-	glEnable( GL_TEXTURE_2D );
-	bombtexture = LoadTextureRAW( "texture.raw", TRUE );
+	//glEnable( GL_TEXTURE_2D );
+	//bombtexture = LoadTextureRAW( "texture.raw", TRUE );
 }
 
 Mine::Mine(float x, float y, double scoreForThePlayer) : SpaceObject(x,y,scoreForThePlayer) 
@@ -26,8 +27,8 @@ Mine::Mine(float x, float y, double scoreForThePlayer) : SpaceObject(x,y,scoreFo
 	buildThePointsCountingForTheIntersection(); 
 	randMovementVector = Vector2D(rand(), rand());
 	randMovementVector *= normOfTheRandMovementVector/Magnitude(randMovementVector);
-	glEnable( GL_TEXTURE_2D );
-	bombtexture = LoadTextureRAW( "bomb.raw", TRUE );
+	//glEnable( GL_TEXTURE_2D );
+	//bombtexture = LoadTextureRAW( "bomb.raw", TRUE );
 }
 
 
@@ -37,7 +38,7 @@ Mine::~Mine(void)
 }
 
 // load a 256x256 RGB .RAW file as a texture
-GLuint LoadTextureRAW( const char * filename, int wrap )
+/*GLuint LoadTextureRAW( const char * filename, int wrap )
 {
     GLuint texture;
     int width, height;
@@ -87,13 +88,13 @@ GLuint LoadTextureRAW( const char * filename, int wrap )
     /free( data );
 
     return texture;
-}
+}*/
 
 
 void Mine::drawIt()  //called from the main loop
 {
-	glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, bombtexture );
+	//glEnable( GL_TEXTURE_2D );
+    //glBindTexture( GL_TEXTURE_2D, bombtexture );
 
 
 	glBegin(GL_TRIANGLES);
