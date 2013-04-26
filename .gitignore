@@ -44,6 +44,7 @@ local.properties
 *.tlog
 
 # Build results
+Debug/
 SuperBall/[Dd]ebug/
 [Dd]ebug/
 [Rr]elease/

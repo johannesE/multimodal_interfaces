@@ -6,7 +6,6 @@
 #include <GL/glu.h>
 #include <stdio.h>
 */
-
 #define PI2 6.283185307f
 #define one_tenth_PI 0.31141592654f
 //GLuint bombtexture;
