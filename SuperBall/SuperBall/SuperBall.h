@@ -11,7 +11,6 @@ class SuperBall
 public:
 	SuperBall(void);
 	~SuperBall(void);
-
 	//static void update_aX(int newValue, int zeroLevel, float divisor, float intervalOfToleranceAroundZero);
 	//static void update_aY(int newValue, int zeroLevel, float divisor, float intervalOfToleranceAroundZero);
 

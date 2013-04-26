@@ -22,7 +22,9 @@
 
 
 
-//Global cariables:
+
+
+//Global variables:
 
 GLsizei MOUSEx=0, MOUSEy=0;
 GLfloat SIDE=200;
@@ -77,6 +79,12 @@ float bombsAttractionFactor = 0.17f;
 float bombsFactorForThierIndependentRandomMovement = 0.17f;  //should be more or less the double of the attraction, or something like that
 
 bool gameOver = false;
+
+//for the game over
+int ButtonX = 50;
+	int ButtonY = 50;
+	int ButtonHEIGHT = 100;
+	int ButtonWIDTH = 200;
 
 
 
@@ -221,55 +229,6 @@ void spawnNewSpaceObjects(int a)
 
 
 
-void drawSquare1()
-{
-    glColor3fv(BLUE);
-    glBegin(GL_POLYGON);
-        glVertex3f(MOUSEx, MOUSEy,0);
-        glVertex3f(MOUSEx+SIDE, MOUSEy,0);
-        glVertex3f(MOUSEx+SIDE, MOUSEy+SIDE,0);
-        glVertex3f(MOUSEx, MOUSEy+SIDE,0);
-    glEnd();
-
-
-	glColor3fv(RED);
-    glBegin(GL_POLYGON);
-        glVertex3f(x, y,0);
-        glVertex3f(x+SIDE, y,0);
-        glVertex3f(x+SIDE, y+SIDE,0);
-        glVertex3f(x, y+SIDE,0);
-    glEnd();
-
-
-	  time_t timer;
-	  struct tm y2k;
-	  long seconds;
-
-	  y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
-	  y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
-
-	  time(&timer);  /* get current time; same as: timer = time(NULL)  */
-
-	  seconds = (long) difftime(timer,mktime(&y2k));
-
-	int deltaX = seconds%2;
-	int deltaY = seconds%3;
-
-	if(x>screenWidth - SIDE) minusForDeltaX = true;
-	if(x<=0) minusForDeltaX = false;
-	if(y>screenHeight - SIDE) minusForDeltaY = true;
-	if(y<=0) minusForDeltaY = false;
-
-	if(minusForDeltaX) x-=deltaX;
-	else x+=deltaX;
-	if(minusForDeltaY) y-=deltaY;
-	else y+=deltaY;
-
-	
-
-
-    glFlush();
-}   
 
 void displayTheScore()
 {
@@ -297,18 +256,44 @@ void displayTheScore()
 
 void displayGameOver()
 {
-	char* string = "Game Over";
+	char* string1 = "Game Over";
 	char *c;
 	glPushMatrix();
 	glTranslatef(screenWidth/2.0f - 356, screenHeight/2.0f + 50,0);
 	glScalef(1.0f,-1.0f,0);
 	GLfloat color[3] = {0.0f, 0.5f, 0.05f};
 	glColor3fv( color );
+	for (c=string1; *c != '\0'; c++)
+	{
+		glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
+	}
+	glPopMatrix();
+
+	//draw the button
+
+	glBegin(GL_POLYGON);
+        glVertex2f(ButtonX, ButtonY);
+        glVertex2f(ButtonX, ButtonY+ButtonHEIGHT);
+        glVertex2f(ButtonX+ButtonWIDTH, ButtonY+ButtonHEIGHT);
+        glVertex2f(ButtonX+ButtonWIDTH, ButtonY);
+    glEnd();
+
+	//play again writing
+	char* string = "Play Again";
+	glPushMatrix();
+	glTranslatef(100, 100, 0);
+	glScalef(0.2f, -0.2f, 0);
+	GLfloat color2[3] = {0.0f, 0.0f, 1.0f};
+	glColor3fv( color2 );
+
 	for (c=string; *c != '\0'; c++)
 	{
 		glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
 	}
 	glPopMatrix();
+
+	
+
 }
 
 
@@ -503,29 +488,7 @@ void setY(int y)
     MOUSEy=y;
 }
 
-void mouse(int btn, int state, int x, int y)
-{
-	/*
-    if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN)   
-    {
-        setX(x);
-        setY(y);
-        //drawSquare(MOUSEx,HEIGHT-MOUSEy);
-        glutPostRedisplay();
-    }
-	*/
 
-
-	setX(x);
-    setY(y);
-	glutPostRedisplay();
-
-
-    if(btn==GLUT_RIGHT_BUTTON && state==GLUT_DOWN)   
-    {
-        exit(1);
-    }
-}
 
 void specialKeys(int key, int x, int y) 
 {
@@ -609,6 +572,48 @@ void keyboard(unsigned char key, int x, int y)
   glutPostRedisplay();
 }
 
+void startgame()
+{
+	
+	try
+	{
+			gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
+	}
+	catch( int i)
+	{
+		printf("Exception %d ",i);
+		char chaaar;
+		printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
+		scanf("%c",&chaaar);
+		exit(0);
+	}
+
+}
+
+/* called when a mouse button is pressed or released */
+void MouseButton(int button,int state,int x,int y)
+{
+	if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
+	{
+		printf("play again clicked \n");
+		startgame();
+		gameOver = false;
+
+	}
+
+
+}
+
+
+
+/* called when the mouse moves */
+void MouseMove(int x,int y)
+{
+	/* Pass information about the position of the mouse to pui */
+
+}
+
+
 
 int main(int argc, char **argv)
 {   
@@ -632,18 +637,7 @@ int main(int argc, char **argv)
 	
 	
 
-    try
-	{
-			gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
-	}
-	catch( int i)
-	{
-		printf("Exception %d ",i);
-		char chaaar;
-		printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
-		scanf("%c",&chaaar);
-		exit(0);
-	}
+	startgame();
 	
 	
 
@@ -656,10 +650,12 @@ int main(int argc, char **argv)
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
-    glutMouseFunc(mouse);
+	glutMouseFunc(MouseButton);
+	glutMotionFunc(MouseMove);
     glutIdleFunc(spindisplay);
 	glutSpecialFunc(specialKeys);
 	glutKeyboardFunc(keyboard);
     glutMainLoop();
 	
 }
+
