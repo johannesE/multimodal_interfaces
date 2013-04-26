@@ -598,7 +598,7 @@ void MouseButton(int button,int state,int x,int y)
 		printf("play again clicked \n");
 		startgame();
 		gameOver = false;
-
+		glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
 	}
 
 
