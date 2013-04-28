@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClInclude Include="Diamond.h" />
     <ClInclude Include="GamesContents.h" />
+    <ClInclude Include="KinectSpeech.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="PhidgetManager.h" />
     <ClInclude Include="Point2D.h" />
@@ -79,6 +80,7 @@
   <ItemGroup>
     <ClCompile Include="Diamond.cpp" />
     <ClCompile Include="GamesContents.cpp" />
+    <ClCompile Include="KinectSpeech.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="PhidgetManager.cpp" />
     <ClCompile Include="Point2D.cpp" />
