@@ -18,13 +18,12 @@
 #include <typeinfo>
 #include "GamesContents.h"
 #include "Point2D.h"
+#include "texture2.h"
 
 
 
 
-
-
-//Global variables:
+//Global cariables:
 
 GLsizei MOUSEx=0, MOUSEy=0;
 GLfloat SIDE=200;
@@ -51,7 +50,7 @@ int windowWidth, windowHeight,windowPosX, windowPosY, screenWidth, screenHeight;
 
 int superBallSPositionX = 300;
 int superBallSPositionY= 400;
-float superBallSRadius = 80;
+float superBallSRadius = 50;
 float superBallSRadiusMin = 40;
 float superBallSRadiusMax = 150;
 float superBallSSpeedX = 0.0f;
@@ -80,11 +79,8 @@ float bombsFactorForThierIndependentRandomMovement = 0.17f;  //should be more or
 
 bool gameOver = false;
 
-//for the game over
-int ButtonX = 50;
-	int ButtonY = 50;
-	int ButtonHEIGHT = 100;
-	int ButtonWIDTH = 200;
+GLuint texture_bomb;
+GLubyte* imageData;
 
 
 
@@ -229,6 +225,55 @@ void spawnNewSpaceObjects(int a)
 
 
 
+void drawSquare1()
+{
+    glColor3fv(BLUE);
+    glBegin(GL_POLYGON);
+        glVertex3f(MOUSEx, MOUSEy,0);
+        glVertex3f(MOUSEx+SIDE, MOUSEy,0);
+        glVertex3f(MOUSEx+SIDE, MOUSEy+SIDE,0);
+        glVertex3f(MOUSEx, MOUSEy+SIDE,0);
+    glEnd();
+
+
+	glColor3fv(RED);
+    glBegin(GL_POLYGON);
+        glVertex3f(x, y,0);
+        glVertex3f(x+SIDE, y,0);
+        glVertex3f(x+SIDE, y+SIDE,0);
+        glVertex3f(x, y+SIDE,0);
+    glEnd();
+
+
+	  time_t timer;
+	  struct tm y2k;
+	  long seconds;
+
+	  y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
+	  y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
+
+	  time(&timer);  /* get current time; same as: timer = time(NULL)  */
+
+	  seconds = (long) difftime(timer,mktime(&y2k));
+
+	int deltaX = seconds%2;
+	int deltaY = seconds%3;
+
+	if(x>screenWidth - SIDE) minusForDeltaX = true;
+	if(x<=0) minusForDeltaX = false;
+	if(y>screenHeight - SIDE) minusForDeltaY = true;
+	if(y<=0) minusForDeltaY = false;
+
+	if(minusForDeltaX) x-=deltaX;
+	else x+=deltaX;
+	if(minusForDeltaY) y-=deltaY;
+	else y+=deltaY;
+
+	
+
+
+    glFlush();
+}   
 
 void displayTheScore()
 {
@@ -256,44 +301,18 @@ void displayTheScore()
 
 void displayGameOver()
 {
-	char* string1 = "Game Over";
+	char* string = "Game Over";
 	char *c;
 	glPushMatrix();
 	glTranslatef(screenWidth/2.0f - 356, screenHeight/2.0f + 50,0);
 	glScalef(1.0f,-1.0f,0);
 	GLfloat color[3] = {0.0f, 0.5f, 0.05f};
 	glColor3fv( color );
-	for (c=string1; *c != '\0'; c++)
-	{
-		glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
-	}
-	glPopMatrix();
-
-	//draw the button
-
-	glBegin(GL_POLYGON);
-        glVertex2f(ButtonX, ButtonY);
-        glVertex2f(ButtonX, ButtonY+ButtonHEIGHT);
-        glVertex2f(ButtonX+ButtonWIDTH, ButtonY+ButtonHEIGHT);
-        glVertex2f(ButtonX+ButtonWIDTH, ButtonY);
-    glEnd();
-
-	//play again writing
-	char* string = "Play Again";
-	glPushMatrix();
-	glTranslatef(100, 100, 0);
-	glScalef(0.2f, -0.2f, 0);
-	GLfloat color2[3] = {0.0f, 0.0f, 1.0f};
-	glColor3fv( color2 );
-
 	for (c=string; *c != '\0'; c++)
 	{
 		glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
 	}
 	glPopMatrix();
-
-	
-
 }
 
 
@@ -435,14 +454,46 @@ void display(void)
     glClear (GL_COLOR_BUFFER_BIT);
     glLoadIdentity(); 
 
+
+
 	
+
+	
+
 	if(!gameOver) drawTheBall(superBallSPositionX, superBallSPositionY, superBallSRadius);
+
+	// binds the texture to any geometry about to be rendered
+	glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_bomb);
+
+	glBegin(GL_QUADS);
+
+		glBegin (GL_QUADS);
+		glTexCoord2f (0.0, 0.0);
+		glVertex3f (0.0, 0.0, 0.0);
+		glTexCoord2f (1.0, 0.0);
+		glVertex3f (100.0, 0.0, 0.0);
+		glTexCoord2f (1.0, 1.0);
+		glVertex3f (100.0, 100.0, 0.0);
+		glTexCoord2f (0.0, 1.0);
+		glVertex3f (0.0, 100.0, 0.0);
+		glEnd ();
+		
+    glEnd();
+
+
+	glDisable(GL_TEXTURE_2D);
 
 
 	for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
 	{
 		(*it)->drawIt();
 	}
+
+
+	
+
+
 
 	for (std::list<Diamond*>::iterator it = gamesContents->diamonds.begin(); it != gamesContents->diamonds.end(); it++)
 	{
@@ -488,7 +539,29 @@ void setY(int y)
     MOUSEy=y;
 }
 
+void mouse(int btn, int state, int x, int y)
+{
+	/*
+    if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN)   
+    {
+        setX(x);
+        setY(y);
+        //drawSquare(MOUSEx,HEIGHT-MOUSEy);
+        glutPostRedisplay();
+    }
+	*/
 
+
+	setX(x);
+    setY(y);
+	glutPostRedisplay();
+
+
+    if(btn==GLUT_RIGHT_BUTTON && state==GLUT_DOWN)   
+    {
+        exit(1);
+    }
+}
 
 void specialKeys(int key, int x, int y) 
 {
@@ -572,48 +645,18 @@ void keyboard(unsigned char key, int x, int y)
   glutPostRedisplay();
 }
 
-void startgame()
+static GLuint 
+nearestPower( GLuint value )
 {
-	
-	try
-	{
-			gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
-	}
-	catch( int i)
-	{
-		printf("Exception %d ",i);
-		char chaaar;
-		printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
-		scanf("%c",&chaaar);
-		exit(0);
-	}
+    int i = 1;
 
+    if (value == 0) return -1;      /* Error! */
+    for (;;) {
+         if (value == 1) return i;
+         else if (value == 3) return i*4;
+         value >>= 1; i *= 2;
+    }
 }
-
-/* called when a mouse button is pressed or released */
-void MouseButton(int button,int state,int x,int y)
-{
-	if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
-	{
-		printf("play again clicked \n");
-		startgame();
-		gameOver = false;
-		glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
-	}
-
-
-}
-
-
-
-/* called when the mouse moves */
-void MouseMove(int x,int y)
-{
-	/* Pass information about the position of the mouse to pui */
-
-}
-
-
 
 int main(int argc, char **argv)
 {   
@@ -637,9 +680,53 @@ int main(int argc, char **argv)
 	
 	
 
-	startgame();
+    try
+	{
+			gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
+	}
+	catch( int i)
+	{
+		printf("Exception %d ",i);
+		char chaaar;
+		printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
+		scanf("%c",&chaaar);
+		exit(0);
+	}
 	
 	
+
+
+
+
+
+	//load the textures:
+
+	//texture_bomb = LoadTexture("bomb.bmp");
+
+	texture_bomb = TextureLoad("bomb.bmp",
+            GL_FALSE,     /* I - Generate alpha for bitmap */
+            GL_LINEAR_MIPMAP_LINEAR, /* I - Minification filter */
+            GL_LINEAR, /* I - Magnification filter */
+            GL_REPEAT); 
+	
+	/*
+	glPixelStorei (GL_UNPACK_ALIGNMENT, 1); 
+	glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexEnvf (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE); 
+
+	int imageWidth = 300;
+	int imageHeight = 278;
+	GLsizei sWidth, sHeight;
+    sWidth = nearestPower( imageWidth );
+    sHeight = nearestPower( imageHeight );
+	imageData = (GLubyte *)malloc( sHeight*sWidth*4*sizeof( GLubyte ) );
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);  //the texture width and height must be a power of two
+	glEnable( GL_TEXTURE_2D );
+	*/
+
+
+
+
 
 
 
@@ -650,12 +737,10 @@ int main(int argc, char **argv)
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
-	glutMouseFunc(MouseButton);
-	glutMotionFunc(MouseMove);
+    glutMouseFunc(mouse);
     glutIdleFunc(spindisplay);
 	glutSpecialFunc(specialKeys);
 	glutKeyboardFunc(keyboard);
     glutMainLoop();
 	
 }
-

@@ -1,11 +1,8 @@
 #include "SpaceObject.h"
-#include <math.h>
-#include "glut.h"
-
 
 #pragma once
 
-
+typedef unsigned char BYTE;
 
 class Mine : public SpaceObject
 {
@@ -14,7 +11,7 @@ public:
 	Mine(float x, float y, double scoreForThePlayer);
 	~Mine(void);
 	void Mine::drawIt();  //called from the main loop
-	//GLuint LoadTextureRAW( const char * filename, int wrap );
+
 
 
 
@@ -28,14 +25,12 @@ public:
 	void setTheComponentYofTheRandomVectorPositive();
 	void setTheComponentXofTheRandomVectorNegative();
 	void setTheComponentXofTheRandomVectorPositive();
-	
+
 	
 
 private:
 	
-	static const int radius=40;
-
-	
+	static const int radius=26;
 	void Mine::buildThePointsCountingForTheIntersection();
 };
 

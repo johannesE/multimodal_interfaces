@@ -18,7 +18,7 @@ public:
 	
 	
 private:
-	float width, height;
+	
 	void buildThePointsCountingForTheIntersection();
 	
 };
