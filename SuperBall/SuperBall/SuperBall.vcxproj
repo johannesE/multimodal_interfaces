@@ -30,9 +30,13 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="KinectSDK.props" />
+    <Import Project="OpenGL.props" />
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="KinectSDK.props" />
+    <Import Project="OpenGL.props" />
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -70,7 +74,11 @@
     <ClInclude Include="bmpLoader.h" />
     <ClInclude Include="Diamond.h" />
     <ClInclude Include="GamesContents.h" />
+<<<<<<< HEAD
+    <ClInclude Include="kinectspeech.h" />
+=======
     <ClInclude Include="glaux.h" />
+>>>>>>> 467ac00f2d87775c3affdcabf832b716d9d03bb4
     <ClInclude Include="Mine.h" />
     <ClInclude Include="pcxLoader.h" />
     <ClInclude Include="PhidgetManager.h" />
@@ -86,6 +94,7 @@
     <ClCompile Include="bmpLoader.c" />
     <ClCompile Include="Diamond.cpp" />
     <ClCompile Include="GamesContents.cpp" />
+    <ClCompile Include="kinectspeech.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="pcxLoader.c" />
     <ClCompile Include="PhidgetManager.cpp" />

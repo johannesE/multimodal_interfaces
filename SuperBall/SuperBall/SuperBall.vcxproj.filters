@@ -39,6 +39,9 @@
     <ClInclude Include="Point2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="kinectspeech.h">
+=======
     <ClInclude Include="bmpLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -58,6 +61,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="texture2.h">
+>>>>>>> 467ac00f2d87775c3affdcabf832b716d9d03bb4
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -92,6 +96,11 @@
     <ClCompile Include="texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="kinectspeech.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+=======
     <ClCompile Include="tgaLoader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -101,6 +110,7 @@
     <ClCompile Include="texture2.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+>>>>>>> 467ac00f2d87775c3affdcabf832b716d9d03bb4
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders.hlsl">
