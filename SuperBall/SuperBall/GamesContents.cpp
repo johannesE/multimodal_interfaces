@@ -1,5 +1,6 @@
 #include "GamesContents.h"
 #include <exception>
+#include <typeinfo>
 
 GamesContents::GamesContents(int screenWidth, int screenHeight, int initialNumberOfDiamonds, int initialNumberOfMines, float superBallSPositionX, float superBallSPositionY, float securityRadiusAroundTheCenterOfTheSuperBall)
 {
