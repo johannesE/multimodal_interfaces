@@ -19,14 +19,12 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -39,19 +37,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Program Files\Phidgets;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall;C:\Program Files\Phidgets\x86;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\CImg-1.5.4;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries;$(IncludePath)</IncludePath>
-    <ReferencePath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;$(ReferencePath)</ReferencePath>
-    <LibraryPath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glut-3.7.6-bin;C:\Users\Telegin\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\glfw-2.7.8.bin.WIN32\include\GL;C:\Program Files\Phidgets;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries\CImg-1.5.4\resources;C:\Users\Telefonkabine\Documents\GitHub\multimodal_interfaces\SuperBall\SuperBall\libraries;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Dan\Documents\Visual Studio 2010\Projects\SuperBall\SuperBall;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Program Files\Phidgets;C:\Users\Dan\Documents\GitHub\multimodal_interfaces\SuperBall\libraries;$(IncludePath)</IncludePath>
+    <ReferencePath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\GitHub\multimodal_interfaces\SuperBall\libraries;$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glfw-2.7.7.bin.WIN32\include\GL;C:\Users\Dan\Documents\Master Benefri\Multimodal Interfaces\glut-3.7.6-bin;C:\Users\Dan\Documents\GitHub\multimodal_interfaces\SuperBall\libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Program Files\Phidgets;C:\Program Files\Phidgets\x86;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Phidgets;C:\Users\Dan\Documents\GitHub\multimodal_interfaces\SuperBall\libraries;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Program Files\Phidgets\Phidget21.lib;C:\Program Files\Phidgets\x86\Phidget21.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files\Phidgets\Phidget21.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -68,26 +66,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bitmap2.h" />
+    <ClInclude Include="bmpLoader.h" />
     <ClInclude Include="Diamond.h" />
     <ClInclude Include="GamesContents.h" />
+<<<<<<< HEAD
     <ClInclude Include="KinectSpeech.h" />
+=======
+    <ClInclude Include="glaux.h" />
+>>>>>>> with bombs
     <ClInclude Include="Mine.h" />
+    <ClInclude Include="pcxLoader.h" />
     <ClInclude Include="PhidgetManager.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="SpaceObject.h" />
     <ClInclude Include="SuperBall.h" />
+    <ClInclude Include="texture.h" />
+    <ClInclude Include="texture2.h" />
+    <ClInclude Include="tgaLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bitmap2.cpp" />
+    <ClCompile Include="bmpLoader.c" />
     <ClCompile Include="Diamond.cpp" />
     <ClCompile Include="GamesContents.cpp" />
     <ClCompile Include="KinectSpeech.cpp" />
     <ClCompile Include="Mine.cpp" />
+    <ClCompile Include="pcxLoader.c" />
     <ClCompile Include="PhidgetManager.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="SpaceObject.cpp" />
     <ClCompile Include="SuperBall.cpp" />
+    <ClCompile Include="texture.cpp" />
+    <ClCompile Include="texture2.cpp" />
+    <ClCompile Include="tgaLoader.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bomb.bmp" />
+    <None Include="images\bomb.jpg" />
     <None Include="shaders.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

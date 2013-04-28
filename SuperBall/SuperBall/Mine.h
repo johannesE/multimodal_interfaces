@@ -1,4 +1,5 @@
 #include "SpaceObject.h"
+#include <glut.h>
 
 #pragma once
 
@@ -31,6 +32,8 @@ public:
 private:
 	
 	static const int radius=26;
+	static GLfloat color1[3];
+	static GLfloat color2[3];
 	void Mine::buildThePointsCountingForTheIntersection();
 };
 
