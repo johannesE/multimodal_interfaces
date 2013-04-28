@@ -26,6 +26,7 @@ public:
 
 protected:
 	float x,y;
+	float width, height;
 	double scoreForThePayer;
 	std::list<Point2D> pointsCountingForAnIntersection;
 
