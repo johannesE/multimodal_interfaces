@@ -39,7 +39,29 @@
     <ClInclude Include="Point2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="kinectspeech.h">
+=======
+    <ClInclude Include="bmpLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pcxLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tgaLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glaux.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bitmap2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture2.h">
+>>>>>>> 467ac00f2d87775c3affdcabf832b716d9d03bb4
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -48,6 +70,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Diamond.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhidgetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpaceObject.cpp">
@@ -62,16 +87,40 @@
     <ClCompile Include="Point2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhidgetManager.cpp">
+    <ClCompile Include="bmpLoader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pcxLoader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="kinectspeech.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+    <ClCompile Include="tgaLoader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bitmap2.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture2.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+>>>>>>> 467ac00f2d87775c3affdcabf832b716d9d03bb4
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders.hlsl">
       <Filter>Source Files</Filter>
+    </None>
+    <None Include="images\bomb.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="bomb.bmp">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
 </Project>

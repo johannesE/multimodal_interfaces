@@ -1,101 +1,45 @@
 #include "Mine.h"
 #include <math.h>
-#include "glut.h"
-/*#include <windows.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <stdio.h>
-*/
+#include <iostream>
+#include <glut.h>	
+
+
 #define PI2 6.283185307f
 #define one_tenth_PI 0.31141592654f
-//GLuint bombtexture;
+
+
 
 
 
 Mine::Mine(float x, float y) : SpaceObject(x,y,0) 
 { 
+	this->width = 30;
+	this->height = 30;
 	buildThePointsCountingForTheIntersection();
 	randMovementVector = Vector2D(rand(), rand());
 	randMovementVector *= normOfTheRandMovementVector/Magnitude(randMovementVector);
-	//glEnable( GL_TEXTURE_2D );
-	//bombtexture = LoadTextureRAW( "texture.raw", TRUE );
 }
 
 Mine::Mine(float x, float y, double scoreForThePlayer) : SpaceObject(x,y,scoreForThePlayer) 
 { 
+	this->width = 30;
+	this->height = 30;
 	buildThePointsCountingForTheIntersection(); 
 	randMovementVector = Vector2D(rand(), rand());
 	randMovementVector *= normOfTheRandMovementVector/Magnitude(randMovementVector);
-	//glEnable( GL_TEXTURE_2D );
-	//bombtexture = LoadTextureRAW( "bomb.raw", TRUE );
 }
 
 
 Mine::~Mine(void)
 {
-//	FreeTexture( bombtexture );
 }
-
-// load a 256x256 RGB .RAW file as a texture
-/*GLuint LoadTextureRAW( const char * filename, int wrap )
-{
-    GLuint texture;
-    int width, height;
-    BYTE * data;
-    FILE * file;
-
-    // open texture data
-    file = fopen( filename, "rb" );
-    if ( file == NULL ) return 0;
-
-    // allocate buffer
-    width = 300;
-    height = 278;
-	data = malloc( width * height * 3 );
-
-    // read texture data
-    fread( data, width * height * 3, 1, file );
-    fclose( file );
-
-    // allocate a texture name
-    glGenTextures( 1, &texture );
-
-    // select our current texture
-    glBindTexture( GL_TEXTURE_2D, texture );
-
-    // select modulate to mix texture with color for shading
-    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
-
-    // when texture area is small, bilinear filter the closest mipmap
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                     GL_LINEAR_MIPMAP_NEAREST );
-    // when texture area is large, bilinear filter the first mipmap
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-
-    // if wrap is true, the texture wraps over at the edges (repeat)
-    //       ... false, the texture ends at the edges (clamp)
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                     wrap ? GL_REPEAT : GL_CLAMP );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                     wrap ? GL_REPEAT : GL_CLAMP );
-
-    // build our texture mipmaps
-    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height,
-                       GL_RGB, GL_UNSIGNED_BYTE, data );
-
-    // free buffer
-    /free( data );
-
-    return texture;
-}*/
 
 
 void Mine::drawIt()  //called from the main loop
 {
-	//glEnable( GL_TEXTURE_2D );
-    //glBindTexture( GL_TEXTURE_2D, bombtexture );
-
-
+	
+	
+	
 	glBegin(GL_TRIANGLES);
 
 		GLfloat color[3] = {0.0, 0.0, 0.0};
@@ -103,16 +47,20 @@ void Mine::drawIt()  //called from the main loop
 
 		for(float a=0; a<PI2; a+=one_tenth_PI)
 		{
+			glTexCoord3f(x, y ,0);
 			glVertex3f(x, y ,0);
+			glTexCoord3f(x + cos(a), y-sin(a) ,0);
 			glVertex3f(x + cos(a)*radius, y-sin(a)*radius ,0);
+			glTexCoord3f(x + cos(a+one_tenth_PI), y-sin(a+one_tenth_PI),0);
 			glVertex3f(x + cos(a+one_tenth_PI)*radius, y-sin(a+one_tenth_PI)*radius ,0);
 		}
     glEnd();
+	
 }
 
 void Mine::buildThePointsCountingForTheIntersection()
 {
-
+	//TODO: adapt to the image:
 	for(float a=0; a<PI2; a+=one_tenth_PI)
 		{
 			pointsCountingForAnIntersection.push_back( Point2D(    (float)(x + cos(a)*radius), (float)(y-sin(a)*radius)   ));
