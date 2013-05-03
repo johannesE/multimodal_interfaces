@@ -3,14 +3,14 @@
 #include <time.h>
 #include <math.h>
 #include <string.h>
-#include <stdio.h>		//for the Phidgets
-#include <stdlib.h> 
+#include <stdio.h> //for the Phidgets
+#include <stdlib.h>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
 
-#include <glut.h>					// Override the definition of 'exit' in stdlib.h with that in glut.h. Place the stdlib.h line above the glut.h line in your code.
-#include <phidget21.h>	//for the Phidgets
+#include <glut.h> // Override the definition of 'exit' in stdlib.h with that in glut.h. Place the stdlib.h line above the glut.h line in your code.
+#include <phidget21.h> //for the Phidgets
 
 #include "PhidgetManager.h"
 
@@ -75,7 +75,7 @@ unsigned int milliSecondsIntervalForSpawningNewSpaceObjects = 2000;
 //unsigned int milliSecondsIntervalForMovingTheBombs =50;
 
 float bombsAttractionFactor = 0.17f;
-float bombsFactorForThierIndependentRandomMovement = 0.17f;  //should be more or less the double of the attraction, or something like that
+float bombsFactorForThierIndependentRandomMovement = 0.17f; //should be more or less the double of the attraction, or something like that
 
 bool gameOver = false;
 
@@ -95,132 +95,132 @@ SuperBall::~SuperBall()
 /*
 void SuperBall::update_aX(int newValue, int zeroLevel, float divisor, float intervalOfToleranceAroundZero)
 {
-	if((zeroLevel-intervalOfToleranceAroundZero)<newValue && (zeroLevel+intervalOfToleranceAroundZero)>newValue) superBallSAX=0.0f;
-	else superBallSAX = (newValue-zeroLevel)/divisor;
+if((zeroLevel-intervalOfToleranceAroundZero)<newValue && (zeroLevel+intervalOfToleranceAroundZero)>newValue) superBallSAX=0.0f;
+else superBallSAX = (newValue-zeroLevel)/divisor;
 }
 void SuperBall::update_aY(int newValue, int zeroLevel, float divisor, float intervalOfToleranceAroundZero)
 {
-	if((zeroLevel-intervalOfToleranceAroundZero)<newValue && (zeroLevel+intervalOfToleranceAroundZero)>newValue) superBallSAY=0.0f;
-	else superBallSAY = (newValue-zeroLevel)/divisor;
+if((zeroLevel-intervalOfToleranceAroundZero)<newValue && (zeroLevel+intervalOfToleranceAroundZero)>newValue) superBallSAY=0.0f;
+else superBallSAY = (newValue-zeroLevel)/divisor;
 
 }*/
 void SuperBall::update_vX(int newValue)
 {
-	if((sensor1and2zeroLevel-sensor1and2firstToleranceIntervalAroundTheZeroValue)<newValue && (sensor1and2zeroLevel+sensor1and2firstToleranceIntervalAroundTheZeroValue)>newValue) { superBallSSpeedX=0.0f; return;}
-	
-	
-	int sign;
-	if(abs(newValue-sensor1and2zeroLevel) == newValue-sensor1and2zeroLevel)
-	{
-		sign = 1;
-	}
-	else
-	{
-		sign=-1;
-	}
-	double x1 = (newValue-sensor1and2zeroLevel)/sensor1and2SizeOfTheValuesArea * sign * 2.0;  //between 0 and 2
+if((sensor1and2zeroLevel-sensor1and2firstToleranceIntervalAroundTheZeroValue)<newValue && (sensor1and2zeroLevel+sensor1and2firstToleranceIntervalAroundTheZeroValue)>newValue) { superBallSSpeedX=0.0f; return;}
 
-	double x2 = exp(x1);  //between 1 and e^2 = 7.389056099
 
-	double x3 = (x2-1)*100.0;  //between 0 and (e^2-1)*100
+int sign;
+if(abs(newValue-sensor1and2zeroLevel) == newValue-sensor1and2zeroLevel)
+{
+sign = 1;
+}
+else
+{
+sign=-1;
+}
+double x1 = (newValue-sensor1and2zeroLevel)/sensor1and2SizeOfTheValuesArea * sign * 2.0; //between 0 and 2
 
-	double x4 = x3/(e_pw2-1)*sign;   //between 0 and 100 , but moreover with a sign
+double x2 = exp(x1); //between 1 and e^2 = 7.389056099
 
-	superBallSSpeedX = -x4/sensor1and2finalValueDivisor;
+double x3 = (x2-1)*100.0; //between 0 and (e^2-1)*100
+
+double x4 = x3/(e_pw2-1)*sign; //between 0 and 100 , but moreover with a sign
+
+superBallSSpeedX = -x4/sensor1and2finalValueDivisor;
 
 }
 void SuperBall::update_vY(int newValue)
 {
-	if((sensor1and2zeroLevel-sensor1and2firstToleranceIntervalAroundTheZeroValue)<newValue && (sensor1and2zeroLevel+sensor1and2firstToleranceIntervalAroundTheZeroValue)>newValue) { superBallSSpeedY=0.0f; return;}
-	
-	
-	int sign;
-	if(abs(newValue-sensor1and2zeroLevel) == newValue-sensor1and2zeroLevel)
-	{
-		sign = 1;
-	}
-	else
-	{
-		sign=-1;
-	}
-	double x1 = (newValue-sensor1and2zeroLevel)/sensor1and2SizeOfTheValuesArea * sign * 2.0;  //between 0 and 2
+if((sensor1and2zeroLevel-sensor1and2firstToleranceIntervalAroundTheZeroValue)<newValue && (sensor1and2zeroLevel+sensor1and2firstToleranceIntervalAroundTheZeroValue)>newValue) { superBallSSpeedY=0.0f; return;}
 
-	double x2 = exp(x1);  //between 1 and e^2 = 7.389056099
 
-	double x3 = (x2-1)*100.0;  //between 0 and (e^2-1)*100
+int sign;
+if(abs(newValue-sensor1and2zeroLevel) == newValue-sensor1and2zeroLevel)
+{
+sign = 1;
+}
+else
+{
+sign=-1;
+}
+double x1 = (newValue-sensor1and2zeroLevel)/sensor1and2SizeOfTheValuesArea * sign * 2.0; //between 0 and 2
 
-	double x4 = x3/(e_pw2-1)*sign;   //between 0 and 100 , but moreover with a sign
+double x2 = exp(x1); //between 1 and e^2 = 7.389056099
 
-	superBallSSpeedY = -x4/sensor1and2finalValueDivisor;
+double x3 = (x2-1)*100.0; //between 0 and (e^2-1)*100
+
+double x4 = x3/(e_pw2-1)*sign; //between 0 and 100 , but moreover with a sign
+
+superBallSSpeedY = -x4/sensor1and2finalValueDivisor;
 }
 void SuperBall::updateRadius(int newValue)
 {
-	superBallSRadius = newValue / 1000.0 *(superBallSRadiusMax-superBallSRadiusMin) + superBallSRadiusMin;
+superBallSRadius = newValue / 1000.0 *(superBallSRadiusMax-superBallSRadiusMin) + superBallSRadiusMin;
 }
 
 std::list<SpaceObject*> SuperBall::getTheObjectsThatTheSuperBallIntersectsNow(std::list<Diamond*> diamonds, std::list<Mine*> mines)
 {
-	std::list<SpaceObject*> listeResultante;
+std::list<SpaceObject*> listeResultante;
 
-	for (std::list<Diamond*>::iterator it = diamonds.begin(); it != diamonds.end(); it++)
-	{
-		std::list<Point2D> listOfTheStaticPoints =(*it)->getThePointsCountingForTheIntersections();
+for (std::list<Diamond*>::iterator it = diamonds.begin(); it != diamonds.end(); it++)
+{
+std::list<Point2D> listOfTheStaticPoints =(*it)->getThePointsCountingForTheIntersections();
 
-		if( !listOfTheStaticPoints.empty() )
-		{
-			bool ja = false;
-			for (std::list<Point2D>::iterator it2 = listOfTheStaticPoints.begin(); it2 != listOfTheStaticPoints.end(); it2++)
-			{
-				
-				float dx = superBallSPositionX - (*it2).x;
-				float dy = superBallSPositionY - (*it2).y;    //Ca c'est du Master!  Ca, c'est un Dim'Mac!
+if( !listOfTheStaticPoints.empty() )
+{
+bool ja = false;
+for (std::list<Point2D>::iterator it2 = listOfTheStaticPoints.begin(); it2 != listOfTheStaticPoints.end(); it2++)
+{
 
-				float distance = sqrt( (float)(dx*dx + dy*dy) );
-				if(distance <= superBallSRadius)
-				{
-					ja=true;
-				}
+float dx = superBallSPositionX - (*it2).x;
+float dy = superBallSPositionY - (*it2).y; //Ca c'est du Master! Ca, c'est un Dim'Mac!
 
-			}
-			if(ja) listeResultante.push_back(*it);
-		}
-		
-	}
+float distance = sqrt( (float)(dx*dx + dy*dy) );
+if(distance <= superBallSRadius)
+{
+ja=true;
+}
 
-	for (std::list<Mine*>::iterator it = mines.begin(); it != mines.end(); it++)
-	{
-		std::list<Point2D> listOfTheStaticPoints =(*it)->getThePointsCountingForTheIntersections();
+}
+if(ja) listeResultante.push_back(*it);
+}
 
-		if( !listOfTheStaticPoints.empty() )
-		{
-			bool ja = false;
-			for (std::list<Point2D>::iterator it2 = listOfTheStaticPoints.begin(); it2 != listOfTheStaticPoints.end(); it2++)
-			{
-				
-				float dx = superBallSPositionX - (*it2).x;
-				float dy = superBallSPositionY - (*it2).y;
+}
 
-				float distance = sqrt( (float)(dx*dx + dy*dy) );
-				if(distance <= superBallSRadius)
-				{
-					ja=true;
-				}
+for (std::list<Mine*>::iterator it = mines.begin(); it != mines.end(); it++)
+{
+std::list<Point2D> listOfTheStaticPoints =(*it)->getThePointsCountingForTheIntersections();
 
-			}
-			if(ja) listeResultante.push_back(*it);
-		}
-		
-	}
-	return listeResultante;
+if( !listOfTheStaticPoints.empty() )
+{
+bool ja = false;
+for (std::list<Point2D>::iterator it2 = listOfTheStaticPoints.begin(); it2 != listOfTheStaticPoints.end(); it2++)
+{
+
+float dx = superBallSPositionX - (*it2).x;
+float dy = superBallSPositionY - (*it2).y;
+
+float distance = sqrt( (float)(dx*dx + dy*dy) );
+if(distance <= superBallSRadius)
+{
+ja=true;
+}
+
+}
+if(ja) listeResultante.push_back(*it);
+}
+
+}
+return listeResultante;
 }
 
 
 void spawnNewSpaceObjects(int a)
 {
-	gamesContents->addOneRandomDiamond();
-	if(rand()%2==1) gamesContents->addOneMine(superBallSPositionX, superBallSPositionY, superBallSRadiusMax*3.0f);
-	glutPostRedisplay();
-	if(!gameOver) glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);  //we register again this same function to the timer, as it seems to be called only once
+gamesContents->addOneRandomDiamond();
+if(rand()%2==1) gamesContents->addOneMine(superBallSPositionX, superBallSPositionY, superBallSRadiusMax*3.0f);
+glutPostRedisplay();
+if(!gameOver) glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0); //we register again this same function to the timer, as it seems to be called only once
 }
 
 
@@ -236,7 +236,7 @@ void drawSquare1()
     glEnd();
 
 
-	glColor3fv(RED);
+glColor3fv(RED);
     glBegin(GL_POLYGON);
         glVertex3f(x, y,0);
         glVertex3f(x+SIDE, y,0);
@@ -245,88 +245,88 @@ void drawSquare1()
     glEnd();
 
 
-	  time_t timer;
-	  struct tm y2k;
-	  long seconds;
+time_t timer;
+struct tm y2k;
+long seconds;
 
-	  y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
-	  y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
+y2k.tm_hour = 0; y2k.tm_min = 0; y2k.tm_sec = 0;
+y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
 
-	  time(&timer);  /* get current time; same as: timer = time(NULL)  */
+time(&timer); /* get current time; same as: timer = time(NULL) */
 
-	  seconds = (long) difftime(timer,mktime(&y2k));
+seconds = (long) difftime(timer,mktime(&y2k));
 
-	int deltaX = seconds%2;
-	int deltaY = seconds%3;
+int deltaX = seconds%2;
+int deltaY = seconds%3;
 
-	if(x>screenWidth - SIDE) minusForDeltaX = true;
-	if(x<=0) minusForDeltaX = false;
-	if(y>screenHeight - SIDE) minusForDeltaY = true;
-	if(y<=0) minusForDeltaY = false;
+if(x>screenWidth - SIDE) minusForDeltaX = true;
+if(x<=0) minusForDeltaX = false;
+if(y>screenHeight - SIDE) minusForDeltaY = true;
+if(y<=0) minusForDeltaY = false;
 
-	if(minusForDeltaX) x-=deltaX;
-	else x+=deltaX;
-	if(minusForDeltaY) y-=deltaY;
-	else y+=deltaY;
+if(minusForDeltaX) x-=deltaX;
+else x+=deltaX;
+if(minusForDeltaY) y-=deltaY;
+else y+=deltaY;
 
-	
+
 
 
     glFlush();
-}   
+}
 
 void displayTheScore()
 {
-	/*
-	char *c;
-	glRasterPos3f(screenWidth-100, 40,0);
-	for (c = gamesContents->playersScoreAsString; *c != '\0'; c++) 
-	{
-		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
-	}
-	*/
+/*
+char *c;
+glRasterPos3f(screenWidth-100, 40,0);
+for (c = gamesContents->playersScoreAsString; *c != '\0'; c++)
+{
+glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+}
+*/
 
-	char *c;
-	glPushMatrix();
-	glTranslatef(screenWidth-120, 40,0);
-	glScalef(0.19f,-0.19f,0);
-	glColor3fv( colorOfTheScore );
-	for (c=gamesContents->playersScoreAsString; *c != '\0'; c++)
-	{
-		glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
-	}
-	glPopMatrix();
-	
+char *c;
+glPushMatrix();
+glTranslatef(screenWidth-120, 40,0);
+glScalef(0.19f,-0.19f,0);
+glColor3fv( colorOfTheScore );
+for (c=gamesContents->playersScoreAsString; *c != '\0'; c++)
+{
+glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
+}
+glPopMatrix();
+
 }
 
 void displayGameOver()
 {
-	char* string = "Game Over";
-	char *c;
-	glPushMatrix();
-	glTranslatef(screenWidth/2.0f - 356, screenHeight/2.0f + 50,0);
-	glScalef(1.0f,-1.0f,0);
-	GLfloat color[3] = {0.0f, 0.5f, 0.05f};
-	glColor3fv( color );
-	for (c=string; *c != '\0'; c++)
-	{
-		glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
-	}
-	glPopMatrix();
+char* string = "Game Over";
+char *c;
+glPushMatrix();
+glTranslatef(screenWidth/2.0f - 356, screenHeight/2.0f + 50,0);
+glScalef(1.0f,-1.0f,0);
+GLfloat color[3] = {0.0f, 0.5f, 0.05f};
+glColor3fv( color );
+for (c=string; *c != '\0'; c++)
+{
+glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
+}
+glPopMatrix();
 }
 
 
-void drawTheBall(int x, int y, float r) 
+void drawTheBall(int x, int y, float r)
 {
-	glColor3fv( superBallsColor );
+glColor3fv( superBallsColor );
 
     glBegin(GL_TRIANGLES);
 
     for (float i = 0.0f; i < PI2; i+=one_fifteenth_PI)
     {
-		glVertex3f(x, y, 0);
-		glVertex3f(x +  r * cos(i), y + r * sin(i),0);
-		glVertex3f(x +  r * cos(i+one_fifteenth_PI), y + r * sin(i+one_fifteenth_PI),0);
+glVertex3f(x, y, 0);
+glVertex3f(x + r * cos(i), y + r * sin(i),0);
+glVertex3f(x + r * cos(i+one_fifteenth_PI), y + r * sin(i+one_fifteenth_PI),0);
     }
 
     glEnd();
@@ -335,176 +335,174 @@ void drawTheBall(int x, int y, float r)
 void moveTheBombs(int a)
 {
 
-	for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
-	{
-		float x = (*it)->posX();
-		float y = (*it)->posY();
+for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
+{
+float x = (*it)->posX();
+float y = (*it)->posY();
 
-		Vector2D direction = Vector2D(superBallSPositionX - x, superBallSPositionY - y);
-		direction *= bombsAttractionFactor/Magnitude(direction);
+Vector2D direction = Vector2D(superBallSPositionX - x, superBallSPositionY - y);
+direction *= bombsAttractionFactor/Magnitude(direction);
 
-		(*it)->updateTheRandMovementVector();
+(*it)->updateTheRandMovementVector();
 
-		direction += (*it)->randMovementVector *bombsFactorForThierIndependentRandomMovement / Mine::normOfTheRandMovementVector ; 
+direction += (*it)->randMovementVector *bombsFactorForThierIndependentRandomMovement / Mine::normOfTheRandMovementVector ;
 
-		(*it)->setNewPositionAndUpdateTheIntersectionPoints(x+direction.x, y+direction.y, direction);
-
-
+(*it)->setNewPositionAndUpdateTheIntersectionPoints(x+direction.x, y+direction.y, direction);
 
 
-		//check whether we are in the screen:
 
-		if((*it)->posX() > screenWidth) 
-		{
-			(*it)->setTheComponentXofTheRandomVectorNegative();
 
-			direction=Vector2D( screenWidth -  (*it)->posX(), 0.0f);
-			(*it)->setNewPositionAndUpdateTheIntersectionPoints(screenWidth, (*it)->posY(), direction);
-		}
-		if((*it)->posX() < 0.0f) 
-		{
-			(*it)->setTheComponentXofTheRandomVectorPositive();
+//check whether we are in the screen:
 
-			direction=Vector2D( 0.0f -  (*it)->posX(), 0.0f);
-			(*it)->setNewPositionAndUpdateTheIntersectionPoints(0.0f, (*it)->posY(), direction);
-		}
-		if((*it)->posY() > screenHeight) 
-		{
-			(*it)->setTheComponentYofTheRandomVectorNegative();
+if((*it)->posX() > screenWidth)
+{
+(*it)->setTheComponentXofTheRandomVectorNegative();
 
-			direction=Vector2D(0.0f,  screenHeight -  (*it)->posY());
-			(*it)->setNewPositionAndUpdateTheIntersectionPoints((*it)->posX(), screenHeight, direction);
-		}
-		if((*it)->posY() < 0.0f) 
-		{
-			(*it)->setTheComponentYofTheRandomVectorPositive();
+direction=Vector2D( screenWidth - (*it)->posX(), 0.0f);
+(*it)->setNewPositionAndUpdateTheIntersectionPoints(screenWidth, (*it)->posY(), direction);
+}
+if((*it)->posX() < 0.0f)
+{
+(*it)->setTheComponentXofTheRandomVectorPositive();
 
-			direction=Vector2D(0.0f,  0.0f -  (*it)->posY());
-			(*it)->setNewPositionAndUpdateTheIntersectionPoints((*it)->posX(), 0.0f, direction);
-		}
-		
+direction=Vector2D( 0.0f - (*it)->posX(), 0.0f);
+(*it)->setNewPositionAndUpdateTheIntersectionPoints(0.0f, (*it)->posY(), direction);
+}
+if((*it)->posY() > screenHeight)
+{
+(*it)->setTheComponentYofTheRandomVectorNegative();
 
-	}
+direction=Vector2D(0.0f, screenHeight - (*it)->posY());
+(*it)->setNewPositionAndUpdateTheIntersectionPoints((*it)->posX(), screenHeight, direction);
+}
+if((*it)->posY() < 0.0f)
+{
+(*it)->setTheComponentYofTheRandomVectorPositive();
 
-	//glutTimerFunc(milliSecondsIntervalForMovingTheBombs, moveTheBombs, 0);
+direction=Vector2D(0.0f, 0.0f - (*it)->posY());
+(*it)->setNewPositionAndUpdateTheIntersectionPoints((*it)->posX(), 0.0f, direction);
+}
+
+
+}
+
+//glutTimerFunc(milliSecondsIntervalForMovingTheBombs, moveTheBombs, 0);
 }
 
 void updatePositionsOfObjects()
 {
-	superBallSSpeedX += superBallSAX;
-	superBallSSpeedY += superBallSAY;
-	superBallSPositionX += superBallSSpeedX;
-	superBallSPositionY -= superBallSSpeedY;
-	if(superBallSPositionX+superBallSRadius>screenWidth) 
-	{
-		superBallSPositionX=screenWidth-superBallSRadius;
-		if(superBallSAX>0) superBallSAX=0.0f;
-		if(superBallSSpeedX>0) superBallSSpeedX=0.0f;
-	}
-	else if(superBallSPositionX-superBallSRadius<0) 
-	{
-		superBallSPositionX=superBallSRadius;
-		if(superBallSAX<0) superBallSAX=0.0f;
-		if(superBallSSpeedX<0) superBallSSpeedX=0.0f;
-	}
-	if(superBallSPositionY+superBallSRadius>screenHeight) 
-	{
-		superBallSPositionY=screenHeight-superBallSRadius;
-		if(superBallSAY<0) superBallSAY=0.0f;
-		if(superBallSSpeedY<0) superBallSSpeedY=0.0f;
-	}
-	else if(superBallSPositionY-superBallSRadius<0) 
-	{
-		superBallSPositionY=superBallSRadius;
-		if(superBallSAY>0) superBallSAY=0.0f;
-		if(superBallSSpeedY>0) superBallSSpeedY=0.0f;
-	}
+superBallSSpeedX += superBallSAX;
+superBallSSpeedY += superBallSAY;
+superBallSPositionX += superBallSSpeedX;
+superBallSPositionY -= superBallSSpeedY;
+if(superBallSPositionX+superBallSRadius>screenWidth)
+{
+superBallSPositionX=screenWidth-superBallSRadius;
+if(superBallSAX>0) superBallSAX=0.0f;
+if(superBallSSpeedX>0) superBallSSpeedX=0.0f;
+}
+else if(superBallSPositionX-superBallSRadius<0)
+{
+superBallSPositionX=superBallSRadius;
+if(superBallSAX<0) superBallSAX=0.0f;
+if(superBallSSpeedX<0) superBallSSpeedX=0.0f;
+}
+if(superBallSPositionY+superBallSRadius>screenHeight)
+{
+superBallSPositionY=screenHeight-superBallSRadius;
+if(superBallSAY<0) superBallSAY=0.0f;
+if(superBallSSpeedY<0) superBallSSpeedY=0.0f;
+}
+else if(superBallSPositionY-superBallSRadius<0)
+{
+superBallSPositionY=superBallSRadius;
+if(superBallSAY>0) superBallSAY=0.0f;
+if(superBallSSpeedY>0) superBallSSpeedY=0.0f;
+}
 
-	moveTheBombs(0);
+moveTheBombs(0);
 }
 
 void collisionsCheckRightNow_gimmeThisGimmeThat()
 {
-	std::list<SpaceObject*> l1 = SuperBall::getTheObjectsThatTheSuperBallIntersectsNow( gamesContents->diamonds,  gamesContents->mines);
-	
-	if( l1.empty() ) return;
+std::list<SpaceObject*> l1 = SuperBall::getTheObjectsThatTheSuperBallIntersectsNow( gamesContents->diamonds, gamesContents->mines);
 
-	if( gamesContents->checkForMines(l1) )
-	{
+if( l1.empty() ) return;
 
-		//there is a mine...
-		gameOver=true;
-	}
-	else
-	{
-		gamesContents->destroyTheObjectsAndAddThemToTheScore(l1);
+if( gamesContents->checkForMines(l1) )
+{
 
-		itoa((int)(gamesContents->playersScore), gamesContents->playersScoreAsString , 10);
-	}
+//there is a mine...
+gameOver=true;
+}
+else
+{
+gamesContents->destroyTheObjectsAndAddThemToTheScore(l1);
+
+itoa((int)(gamesContents->playersScore), gamesContents->playersScoreAsString , 10);
+}
 }
 
 void display(void)
-{   
-	if(!gameOver)
-	{
-		updatePositionsOfObjects();
-		collisionsCheckRightNow_gimmeThisGimmeThat();
-	}
+{
+if(!gameOver)
+{
+updatePositionsOfObjects();
+collisionsCheckRightNow_gimmeThisGimmeThat();
+}
     glClearColor (openglClearColor[0],openglClearColor[1],openglClearColor[2],openglClearColor[3]);
     glClear (GL_COLOR_BUFFER_BIT);
-    glLoadIdentity(); 
+    glLoadIdentity();
 
 
 
-	
 
-	
 
-	if(!gameOver) drawTheBall(superBallSPositionX, superBallSPositionY, superBallSRadius);
 
-	// binds the texture to any geometry about to be rendered
-	glEnable(GL_TEXTURE_2D);
+
+if(!gameOver) drawTheBall(superBallSPositionX, superBallSPositionY, superBallSRadius);
+
+// binds the texture to any geometry about to be rendered
+glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture_bomb);
 
-	glBegin(GL_QUADS);
+/*
+glBegin(GL_QUADS);
 
-		glBegin (GL_QUADS);
-		glTexCoord2f (0.0, 0.0);
-		glVertex3f (0.0, 0.0, 0.0);
-		glTexCoord2f (1.0, 0.0);
-		glVertex3f (100.0, 0.0, 0.0);
-		glTexCoord2f (1.0, 1.0);
-		glVertex3f (100.0, 100.0, 0.0);
-		glTexCoord2f (0.0, 1.0);
-		glVertex3f (0.0, 100.0, 0.0);
-		glEnd ();
-		
-    glEnd();
-
-
-	glDisable(GL_TEXTURE_2D);
-
-
-	for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
-	{
-		(*it)->drawIt();
-	}
-
-
-	
+glTexCoord2f (0.0, 0.0);
+glVertex3f (0.0, 0.0, 0.0);
+glTexCoord2f (1.0, 0.0);
+glVertex3f (100.0, 0.0, 0.0);
+glTexCoord2f (1.0, 1.0);
+glVertex3f (100.0, 100.0, 0.0);
+glTexCoord2f (0.0, 1.0);
+glVertex3f (0.0, 100.0, 0.0);
+glEnd();
+*/
 
 
 
-	for (std::list<Diamond*>::iterator it = gamesContents->diamonds.begin(); it != gamesContents->diamonds.end(); it++)
-	{
-		(*it)->drawIt();
-	}
 
-	displayTheScore();
+for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
+{
+(*it)->drawIt();
+}
 
-	if(gameOver) displayGameOver();
+glDisable(GL_TEXTURE_2D);
 
-	glutSwapBuffers();
+
+
+
+for (std::list<Diamond*>::iterator it = gamesContents->diamonds.begin(); it != gamesContents->diamonds.end(); it++)
+{
+(*it)->drawIt();
+}
+
+displayTheScore();
+
+if(gameOver) displayGameOver();
+
+glutSwapBuffers();
 }
 
 
@@ -512,20 +510,20 @@ void display(void)
 
 
 void reshape(int w, int h)
-{   
+{
     glViewport(0,0,(GLsizei)w,(GLsizei)h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
      //gluPerspective (60, (GLfloat)w / (GLfloat)h, 1.0, 100.0);
 
     //glOrtho(0.0,1368,768,0,-1.0,1.0);
-	glOrtho(0.0, glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT), 0.0, -1.0,1.0);
+glOrtho(0.0, glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT), 0.0, -1.0,1.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
 
 void spindisplay(void)
-{       
+{
     glutPostRedisplay();
 }
 
@@ -541,78 +539,78 @@ void setY(int y)
 
 void mouse(int btn, int state, int x, int y)
 {
-	/*
-    if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN)   
-    {
-        setX(x);
-        setY(y);
-        //drawSquare(MOUSEx,HEIGHT-MOUSEy);
-        glutPostRedisplay();
-    }
-	*/
+/*
+if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN)
+{
+setX(x);
+setY(y);
+//drawSquare(MOUSEx,HEIGHT-MOUSEy);
+glutPostRedisplay();
+}
+*/
 
 
-	setX(x);
+setX(x);
     setY(y);
-	glutPostRedisplay();
+glutPostRedisplay();
 
 
-    if(btn==GLUT_RIGHT_BUTTON && state==GLUT_DOWN)   
+    if(btn==GLUT_RIGHT_BUTTON && state==GLUT_DOWN)
     {
         exit(1);
     }
 }
 
-void specialKeys(int key, int x, int y) 
+void specialKeys(int key, int x, int y)
 {
    switch (key) {
-		case GLUT_KEY_F11:    // F11: Toggle between full-screen and windowed mode
-			fullScreenMode = !fullScreenMode;         
-			if (fullScreenMode) 
-			{                     
-				windowPosX   = glutGet(GLUT_WINDOW_X); 
-				windowPosY   = glutGet(GLUT_WINDOW_Y);
-				windowWidth  = glutGet(GLUT_WINDOW_WIDTH);
-				windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
-				
-				glutFullScreen();                      
-			} 
-			else 
-			{                                        
-				if(windowWidth<=0) windowWidth = 800;
-				if(windowHeight<=0) windowHeight = 500;
-				if(windowPosX<=0) windowPosX = 300;
-				if(windowPosY<=0) windowPosY = 100;
-				glutReshapeWindow(windowWidth,windowHeight); 
-				glutPositionWindow(windowPosX,windowPosY);   
-			}
-		break;
-		case 27:   //Escape key
-			phidgetManag->close();
-			exit(0);
-			break;
-		case GLUT_KEY_LEFT:
-			//Left directional key. 
-			superBallSPositionX-=10;
-			break;
-		case GLUT_KEY_UP:
-			//Up directional key. 
-			superBallSPositionY-=10;
-			break;
-		case GLUT_KEY_RIGHT:
-			//Right directional key. 
-			superBallSPositionX+=10;
-			break;
-		case GLUT_KEY_DOWN:
-			//Down directional key. 
-			superBallSPositionY+=10;
-			break;
+case GLUT_KEY_F11: // F11: Toggle between full-screen and windowed mode
+fullScreenMode = !fullScreenMode;
+if (fullScreenMode)
+{
+windowPosX = glutGet(GLUT_WINDOW_X);
+windowPosY = glutGet(GLUT_WINDOW_Y);
+windowWidth = glutGet(GLUT_WINDOW_WIDTH);
+windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+
+glutFullScreen();
+}
+else
+{
+if(windowWidth<=0) windowWidth = 800;
+if(windowHeight<=0) windowHeight = 500;
+if(windowPosX<=0) windowPosX = 300;
+if(windowPosY<=0) windowPosY = 100;
+glutReshapeWindow(windowWidth,windowHeight);
+glutPositionWindow(windowPosX,windowPosY);
+}
+break;
+case 27: //Escape key
+phidgetManag->close();
+exit(0);
+break;
+case GLUT_KEY_LEFT:
+//Left directional key.
+superBallSPositionX-=10;
+break;
+case GLUT_KEY_UP:
+//Up directional key.
+superBallSPositionY-=10;
+break;
+case GLUT_KEY_RIGHT:
+//Right directional key.
+superBallSPositionX+=10;
+break;
+case GLUT_KEY_DOWN:
+//Down directional key.
+superBallSPositionY+=10;
+break;
 
 
-		
-		
 
-		
+
+
+
    }
    glutPostRedisplay();
 }
@@ -621,36 +619,36 @@ void keyboard(unsigned char key, int x, int y)
 {
   switch (key)
   {
-		case 27:   //Escape key
-			fullScreenMode = false;
-			glutReshapeWindow(windowWidth,windowHeight); 
-			glutPositionWindow(windowPosX,windowPosY);
-		break;
-		case 'a':
-			superBallSPositionX-=10;
-		break;
-		case 'w':
-			superBallSPositionY-=10;
-		break;
-		case 'd':
-			superBallSPositionX+=10;
-		break;
-		case 's':
-			superBallSPositionY+=10;
-		break;
+case 27: //Escape key
+fullScreenMode = false;
+glutReshapeWindow(windowWidth,windowHeight);
+glutPositionWindow(windowPosX,windowPosY);
+break;
+case 'a':
+superBallSPositionX-=10;
+break;
+case 'w':
+superBallSPositionY-=10;
+break;
+case 'd':
+superBallSPositionX+=10;
+break;
+case 's':
+superBallSPositionY+=10;
+break;
 
-		//37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
-	
+//37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
+
   }
   glutPostRedisplay();
 }
 
-static GLuint 
+static GLuint
 nearestPower( GLuint value )
 {
     int i = 1;
 
-    if (value == 0) return -1;      /* Error! */
+    if (value == 0) return -1; /* Error! */
     for (;;) {
          if (value == 1) return i;
          else if (value == 3) return i*4;
@@ -659,88 +657,88 @@ nearestPower( GLuint value )
 }
 
 int main(int argc, char **argv)
-{   
-	superBallSPositionX = 300;
-	superBallSPositionY= 400;
-	superBallSRadius = 80;
-	superBallSSpeedX = 0.0f;
-	superBallSSpeedY = 0.0f;
-	
-	glutInit(&argc,argv);
-	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+{
+superBallSPositionX = 300;
+superBallSPositionY= 400;
+superBallSRadius = 80;
+superBallSSpeedX = 0.0f;
+superBallSSpeedY = 0.0f;
+
+glutInit(&argc,argv);
+glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
     glutInitWindowSize( glutGet(GLUT_SCREEN_WIDTH),glutGet(GLUT_SCREEN_HEIGHT) );
     glutInitWindowPosition(400,150);
-	char* s = "Super Ball";
-	glutCreateWindow(s);
-	screenWidth = glutGet(GLUT_WINDOW_WIDTH);//glutGet(GLUT_SCREEN_WIDTH);
-	screenHeight = glutGet(GLUT_WINDOW_HEIGHT);//glutGet(GLUT_SCREEN_HEIGHT);
+char* s = "Super Ball";
+glutCreateWindow(s);
+screenWidth = glutGet(GLUT_WINDOW_WIDTH);//glutGet(GLUT_SCREEN_WIDTH);
+screenHeight = glutGet(GLUT_WINDOW_HEIGHT);//glutGet(GLUT_SCREEN_HEIGHT);
 
-	phidgetManag = new PhidgetManager();
-	phidgetManag->start();
-	
-	
+phidgetManag = new PhidgetManager();
+phidgetManag->start();
+
+
 
     try
-	{
-			gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
-	}
-	catch( int i)
-	{
-		printf("Exception %d ",i);
-		char chaaar;
-		printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
-		scanf("%c",&chaaar);
-		exit(0);
-	}
-	
-	
+{
+gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
+}
+catch( int i)
+{
+printf("Exception %d ",i);
+char chaaar;
+printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
+scanf("%c",&chaaar);
+exit(0);
+}
 
 
 
 
 
-	//load the textures:
 
-	//texture_bomb = LoadTexture("bomb.bmp");
 
-	texture_bomb = TextureLoad("bomb.bmp",
-            GL_FALSE,     /* I - Generate alpha for bitmap */
+//load the textures:
+
+//texture_bomb = LoadTexture("bomb.bmp");
+
+texture_bomb = TextureLoad("bomb.bmp",
+            GL_FALSE, /* I - Generate alpha for bitmap */
             GL_LINEAR_MIPMAP_LINEAR, /* I - Minification filter */
             GL_LINEAR, /* I - Magnification filter */
-            GL_REPEAT); 
-	
-	/*
-	glPixelStorei (GL_UNPACK_ALIGNMENT, 1); 
-	glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexEnvf (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE); 
+            GL_REPEAT);
 
-	int imageWidth = 300;
-	int imageHeight = 278;
-	GLsizei sWidth, sHeight;
-    sWidth = nearestPower( imageWidth );
-    sHeight = nearestPower( imageHeight );
-	imageData = (GLubyte *)malloc( sHeight*sWidth*4*sizeof( GLubyte ) );
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData);  //the texture width and height must be a power of two
-	glEnable( GL_TEXTURE_2D );
-	*/
+/*
+glPixelStorei (GL_UNPACK_ALIGNMENT, 1);
+glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexEnvf (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
-
+int imageWidth = 300;
+int imageHeight = 278;
+GLsizei sWidth, sHeight;
+sWidth = nearestPower( imageWidth );
+sHeight = nearestPower( imageHeight );
+imageData = (GLubyte *)malloc( sHeight*sWidth*4*sizeof( GLubyte ) );
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData); //the texture width and height must be a power of two
+glEnable( GL_TEXTURE_2D );
+*/
 
 
 
 
 
-	glutFullScreen(); 
 
-	glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
-	
+
+glutFullScreen();
+
+glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
+
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutMouseFunc(mouse);
     glutIdleFunc(spindisplay);
-	glutSpecialFunc(specialKeys);
-	glutKeyboardFunc(keyboard);
+glutSpecialFunc(specialKeys);
+glutKeyboardFunc(keyboard);
     glutMainLoop();
-	
+
 }

@@ -1,4 +1,5 @@
 #include "SpaceObject.h"
+#include <glut.h>
 
 #pragma once
 
@@ -7,30 +8,32 @@ typedef unsigned char BYTE;
 class Mine : public SpaceObject
 {
 public:
-	Mine(float x, float y);
-	Mine(float x, float y, double scoreForThePlayer);
-	~Mine(void);
-	void Mine::drawIt();  //called from the main loop
+Mine(float x, float y);
+Mine(float x, float y, double scoreForThePlayer);
+~Mine(void);
+void Mine::drawIt(); //called from the main loop
 
 
 
 
-	void updateTheRandMovementVector();
+void updateTheRandMovementVector();
 
-	Vector2D randMovementVector;
+Vector2D randMovementVector;
 
-	static const int normOfTheRandMovementVector = 50;    //The smaller it is, the more easilly this vector will change of direction (while adding some random numbers to it's components)
+static const int normOfTheRandMovementVector = 50; //The smaller it is, the more easilly this vector will change of direction (while adding some random numbers to it's components)
 
-	void setTheComponentYofTheRandomVectorNegative();
-	void setTheComponentYofTheRandomVectorPositive();
-	void setTheComponentXofTheRandomVectorNegative();
-	void setTheComponentXofTheRandomVectorPositive();
+void setTheComponentYofTheRandomVectorNegative();
+void setTheComponentYofTheRandomVectorPositive();
+void setTheComponentXofTheRandomVectorNegative();
+void setTheComponentXofTheRandomVectorPositive();
 
-	
+
 
 private:
-	
-	static const int radius=26;
-	void Mine::buildThePointsCountingForTheIntersection();
+
+static const int radius=26;
+static GLfloat color1[3];
+static GLfloat color2[3];
+void Mine::buildThePointsCountingForTheIntersection();
 };
 
