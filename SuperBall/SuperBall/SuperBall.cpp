@@ -83,7 +83,11 @@ bool gameOver = false;
 GLuint texture_bomb;
 GLubyte* imageData;
 
-
+//for the game over
+int ButtonX = 50;
+int ButtonY = 50;
+int ButtonHEIGHT = 100;
+int ButtonWIDTH = 200;
 
 SuperBall::SuperBall()
 {
@@ -224,8 +228,6 @@ glutPostRedisplay();
 if(!gameOver) glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0); //we register again this same function to the timer, as it seems to be called only once
 }
 
-
-
 void drawSquare1()
 {
     glColor3fv(BLUE);
@@ -302,13 +304,36 @@ glPopMatrix();
 
 void displayGameOver()
 {
-char* string = "Game Over";
+char* string1 = "Game Over"; 
 char *c;
 glPushMatrix();
 glTranslatef(screenWidth/2.0f - 356, screenHeight/2.0f + 50,0);
 glScalef(1.0f,-1.0f,0);
 GLfloat color[3] = {0.0f, 0.5f, 0.05f};
 glColor3fv( color );
+for (c=string1; *c != '\0'; c++)
+{
+glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
+}
+glPopMatrix();
+
+//draw the button
+
+glBegin(GL_POLYGON);
+        glVertex2f(ButtonX, ButtonY);
+        glVertex2f(ButtonX, ButtonY+ButtonHEIGHT);
+        glVertex2f(ButtonX+ButtonWIDTH, ButtonY+ButtonHEIGHT);
+        glVertex2f(ButtonX+ButtonWIDTH, ButtonY);
+    glEnd();
+
+//play again writing
+char* string = "Play Again";
+glPushMatrix();
+glTranslatef(100, 100, 0);
+glScalef(0.2f, -0.2f, 0);
+GLfloat color2[3] = {0.0f, 0.0f, 1.0f};
+glColor3fv( color2 );
+
 for (c=string; *c != '\0'; c++)
 {
 glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
@@ -538,29 +563,7 @@ void setY(int y)
     MOUSEy=y;
 }
 
-void mouse(int btn, int state, int x, int y)
-{
-/*
-if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN)
-{
-setX(x);
-setY(y);
-//drawSquare(MOUSEx,HEIGHT-MOUSEy);
-glutPostRedisplay();
-}
-*/
 
-
-setX(x);
-    setY(y);
-glutPostRedisplay();
-
-
-    if(btn==GLUT_RIGHT_BUTTON && state==GLUT_DOWN)
-    {
-        exit(1);
-    }
-}
 
 void specialKeys(int key, int x, int y)
 {
@@ -657,6 +660,51 @@ nearestPower( GLuint value )
     }
 }
 
+void startgame()
+{
+
+try
+{
+gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
+}
+catch( int i)
+{
+printf("Exception %d ",i);
+char chaaar;
+printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
+scanf("%c",&chaaar);
+exit(0);
+}
+
+}
+
+/* called when a mouse button is pressed or released */
+void MouseButton(int button,int state,int x,int y)
+{
+if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
+{
+printf("play again clicked \n");
+startgame();
+gameOver = false;
+glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
+
+}
+
+
+}
+
+
+
+/* called when the mouse moves */
+void MouseMove(int x,int y)
+{
+/* Pass information about the position of the mouse to pui */
+
+}
+
+
+
+
 int main(int argc, char **argv)
 {
 superBallSPositionX = 300;
@@ -679,18 +727,7 @@ phidgetManag->start();
 
 
 
-    try
-{
-gamesContents = new GamesContents(screenWidth, screenHeight, 20, 10, superBallSPositionX, superBallSPositionY, 3.0f*superBallSRadiusMax);
-}
-catch( int i)
-{
-printf("Exception %d ",i);
-char chaaar;
-printf("\npress a key and enter. screenWidth = %d, screenHeight= %d ", screenWidth,screenHeight);
-scanf("%c",&chaaar);
-exit(0);
-}
+ startgame();
 
 
 
@@ -736,7 +773,8 @@ glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjec
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
-    glutMouseFunc(mouse);
+    glutMouseFunc(MouseButton);
+	glutMotionFunc(MouseMove);
     glutIdleFunc(spindisplay);
 glutSpecialFunc(specialKeys);
 glutKeyboardFunc(keyboard);
