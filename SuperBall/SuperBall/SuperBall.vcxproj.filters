@@ -41,6 +41,7 @@
     <None Include="bomb.bmp" />
     <None Include="images\bomb.jpg" />
     <None Include="shaders.hlsl" />
+    <None Include="SpeechBasics-D2D.grxml" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpeechBasics.rc" />

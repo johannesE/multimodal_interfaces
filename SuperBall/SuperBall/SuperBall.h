@@ -5,6 +5,19 @@
 
 #pragma once
 
+
+//for the speech
+enum TurtleAction
+{
+    TurtleActionForward,
+    TurtleActionBackward,
+    TurtleActionTurnRight,
+    TurtleActionTurnLeft,
+    TurtleActionNone
+};
+
+
+
 //it must be static so that it can interact with the rest of the C program
 class SuperBall
 {
@@ -22,6 +35,14 @@ public:
 	static std::list<SpaceObject*> getTheObjectsThatTheSuperBallIntersectsNow(std::list<Diamond*> diamonds, std::list<Mine*> mines);
 
 
+	void DoAction(TurtleAction action);
 	
 };
+
+
+
+
+
+
+
 

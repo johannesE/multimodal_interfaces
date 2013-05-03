@@ -1,6 +1,7 @@
 #include "SuperBall.h"
 
 #include <time.h>
+#include "SuperBall.h"
 #include <math.h>
 #include <string.h>
 #include <stdio.h> //for the Phidgets
@@ -89,6 +90,34 @@ int ButtonX = 50;
 int ButtonY = 50;
 int ButtonHEIGHT = 100;
 int ButtonWIDTH = 200;
+
+
+void SuperBall::DoAction(TurtleAction action)
+{
+    // Number of degrees in a right angle.
+    const int DegreesInRightAngle = 90;
+
+    switch (action)
+    {
+    case TurtleActionForward:
+		//to do forward
+		printf("mOVING fORWARD");
+        break;
+
+    case TurtleActionBackward:
+		//to do down
+        break;
+
+    case TurtleActionTurnRight:
+        //to do move right
+        break;
+
+    case TurtleActionTurnLeft:
+		//to do move left
+        break;
+    }
+
+}
 
 SuperBall::SuperBall()
 {

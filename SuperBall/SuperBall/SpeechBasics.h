@@ -79,7 +79,7 @@ private:
   
 
     // Object that controls moving turtle around and displaying it
-    TurtleController*       m_pTurtleController;
+    SuperBall*       m_pTurtleController;
 
     // Current Kinect sensor
     INuiSensor*             m_pNuiSensor;

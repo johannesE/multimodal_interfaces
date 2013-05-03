@@ -55,7 +55,6 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 /// Constructor
 /// </summary>
 CSpeechBasics::CSpeechBasics() :
-    m_pD2DFactory(NULL),
     m_pTurtleController(NULL),
     m_pNuiSensor(NULL),
     m_pKinectAudioStream(NULL),
@@ -77,12 +76,12 @@ CSpeechBasics::~CSpeechBasics()
         m_pNuiSensor->NuiShutdown();
     }
 
-    // clean up Direct2D renderer
-    delete m_pTurtleController;
-    m_pTurtleController = NULL;
+    // clean up Direct2D renderer                                          !!!!!!!!!!!!!!!!!!!!!
+ //   delete m_pTurtleController;											!!!!!!!!!!!!!!!!!!!!!
+   // m_pTurtleController = NULL;											!!!!!!!!!!!!!!!!!!!!!!!
 
     // clean up Direct2D
-    SafeRelease(m_pD2DFactory);
+
 
     SafeRelease(m_pNuiSensor);
     SafeRelease(m_pKinectAudioStream);
@@ -97,70 +96,7 @@ CSpeechBasics::~CSpeechBasics()
 /// </summary>
 /// <param name="hInstance">handle to the application instance</param>
 /// <param name="nCmdShow">whether to display minimized, maximized, or normally</param>
-int CSpeechBasics::Run(HINSTANCE hInstance, int nCmdShow)
-{
-    MSG       msg = {0};
-    WNDCLASS  wc;
 
-    // Dialog custom window class
-    ZeroMemory(&wc, sizeof(wc));
-    wc.style         = CS_HREDRAW | CS_VREDRAW;
-    wc.cbWndExtra    = DLGWINDOWEXTRA;
-    wc.hInstance     = hInstance;
-    wc.hCursor       = LoadCursorW(NULL, IDC_ARROW);
-    wc.hIcon         = LoadIconW(hInstance, MAKEINTRESOURCE(IDI_APP));
-    wc.lpfnWndProc   = DefDlgProcW;
-    wc.lpszClassName = L"SpeechBasicsAppDlgWndClass";
-
-    if (!RegisterClassW(&wc))
-    {
-        return 0;
-    }
-
-    // Create main application window
-    HWND hWndApp = CreateDialogParamW(
-        hInstance,
-        MAKEINTRESOURCE(IDD_APP),
-        NULL,
-        (DLGPROC)CSpeechBasics::MessageRouter, 
-        reinterpret_cast<LPARAM>(this));
-
-    // Show window
-    ShowWindow(hWndApp, nCmdShow);
-
-    const int eventCount = 1;
-    HANDLE hEvents[eventCount];
-
-    // Main message loop
-    while (WM_QUIT != msg.message)
-    {
-        hEvents[0] = m_hSpeechEvent;
-
-        // Check to see if we have either a message (by passing in QS_ALLINPUT)
-        // Or a speech event (hEvents)
-        DWORD dwEvent = MsgWaitForMultipleObjectsEx(eventCount, hEvents, INFINITE, QS_ALLINPUT, MWMO_INPUTAVAILABLE);
-
-        // Check if this is an event we're waiting on and not a timeout or message
-        if (WAIT_OBJECT_0 == dwEvent)
-        {
-            ProcessSpeech();
-        }
-
-        if (PeekMessageW(&msg, NULL, 0, 0, PM_REMOVE))
-        {
-            // If a dialog message will be taken care of by the dialog proc
-            if ((hWndApp != NULL) && IsDialogMessageW(hWndApp, &msg))
-            {
-                continue;
-            }
-
-            TranslateMessage(&msg);
-            DispatchMessageW(&msg);
-        }
-    }
-
-    return static_cast<int>(msg.wParam);
-}
 
 /// <summary>
 /// Handles window messages, passes most to the class instance to handle
@@ -190,90 +126,6 @@ LRESULT CALLBACK CSpeechBasics::MessageRouter(HWND hWnd, UINT uMsg, WPARAM wPara
     }
 
     return 0;
-}
-
-/// <summary>
-/// Handle windows messages for the class instance
-/// </summary>
-/// <param name="hWnd">window message is for</param>
-/// <param name="uMsg">message</param>
-/// <param name="wParam">message data</param>
-/// <param name="lParam">additional message data</param>
-/// <returns>result of message processing</returns>
-LRESULT CALLBACK CSpeechBasics::DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    LRESULT result = FALSE;
-
-    switch (message)
-    {
-        case WM_INITDIALOG:
-        {
-            // Bind application window handle
-            m_hWnd = hWnd;
-
-            // Init Direct2D
-            D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &m_pD2DFactory);
-
-            // Create and initialize a new Direct2D image renderer (take a look at ImageRenderer.h)
-            // We'll use this to draw the data we receive from the Kinect to the screen
-            m_pTurtleController = new TurtleController();
-            HRESULT hr = m_pTurtleController->Initialize(GetDlgItem(m_hWnd, IDC_AUDIOVIEW), m_pD2DFactory);
-            if (FAILED(hr))
-            {
-                SetStatusMessage(L"Failed to initialize the Direct2D draw device.");
-                break;
-            }
-
-            // Look for a connected Kinect, and create it if found
-            hr = CreateFirstConnected();
-            if (FAILED(hr))
-            {
-                break;
-            }
-
-            SetStatusMessage(L"Say: \"Forward\", \"Back\", \"Turn Left\" or \"Turn Right\"");
-
-            result = FALSE;
-            break;
-        }
-
-        case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            BeginPaint(hWnd, &ps);
-
-            m_pTurtleController->Draw();
-
-            EndPaint(hWnd, &ps);
-            result = TRUE;
-            break;
-        }
-		
-
-        // If the titlebar X is clicked, destroy app
-        case WM_CLOSE:
-            if (NULL != m_pKinectAudioStream)
-            {
-                m_pKinectAudioStream->StopCapture();
-            }
-
-            if (NULL != m_pSpeechRecognizer)
-            {
-                m_pSpeechRecognizer->SetRecoState(SPRST_INACTIVE);
-            }
-
-            DestroyWindow(hWnd);
-            result = TRUE;
-            break;
-
-        case WM_DESTROY:
-            // Quit the main message pump
-            PostQuitMessage(0);
-            result = TRUE;
-            break;
-    }
-
-    return result;
 }
 
 /// <summary>
