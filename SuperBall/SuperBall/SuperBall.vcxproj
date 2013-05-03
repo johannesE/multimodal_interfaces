@@ -80,6 +80,7 @@
     <ClInclude Include="pcxLoader.h" />
     <ClInclude Include="PhidgetManager.h" />
     <ClInclude Include="Point2D.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SpaceObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SuperBall.h" />
@@ -107,6 +108,12 @@
     <None Include="bomb.bmp" />
     <None Include="images\bomb.jpg" />
     <None Include="shaders.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SpeechBasics.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Kinect.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

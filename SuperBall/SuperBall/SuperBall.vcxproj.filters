@@ -33,10 +33,17 @@
     <ClInclude Include="tgaLoader.h" />
     <ClInclude Include="KinectAudioStream.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bomb.bmp" />
     <None Include="images\bomb.jpg" />
     <None Include="shaders.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SpeechBasics.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Kinect.ico" />
   </ItemGroup>
 </Project>
