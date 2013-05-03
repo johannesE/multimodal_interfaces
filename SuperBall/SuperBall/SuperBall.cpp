@@ -466,9 +466,9 @@ void display(void)
 	glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture_bomb);
 
-	/*
 	glBegin(GL_QUADS);
 
+		glBegin (GL_QUADS);
 		glTexCoord2f (0.0, 0.0);
 		glVertex3f (0.0, 0.0, 0.0);
 		glTexCoord2f (1.0, 0.0);
@@ -477,11 +477,12 @@ void display(void)
 		glVertex3f (100.0, 100.0, 0.0);
 		glTexCoord2f (0.0, 1.0);
 		glVertex3f (0.0, 100.0, 0.0);
+		glEnd ();
 		
     glEnd();
-	*/
 
-	
+
+	glDisable(GL_TEXTURE_2D);
 
 
 	for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
@@ -489,7 +490,7 @@ void display(void)
 		(*it)->drawIt();
 	}
 
-	glDisable(GL_TEXTURE_2D);
+
 	
 
 

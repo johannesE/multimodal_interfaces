@@ -42,33 +42,19 @@ void Mine::drawIt()  //called from the main loop
 	
 	glBegin(GL_TRIANGLES);
 
-		
-		glColor3fv(color1);
+		GLfloat color[3] = {0.0, 0.0, 0.0};
+		glColor3fv(color);
 
 		for(float a=0; a<PI2; a+=one_tenth_PI)
 		{
-			
-			//glTexCoord3f(0.5, 0.5 ,0);
+			glTexCoord3f(x, y ,0);
 			glVertex3f(x, y ,0);
-			//glTexCoord3f(cos(a), -sin(a) ,0);
+			glTexCoord3f(x + cos(a), y-sin(a) ,0);
 			glVertex3f(x + cos(a)*radius, y-sin(a)*radius ,0);
-			//glTexCoord3f(cos(a+one_tenth_PI),-sin(a+one_tenth_PI),0);
+			glTexCoord3f(x + cos(a+one_tenth_PI), y-sin(a+one_tenth_PI),0);
 			glVertex3f(x + cos(a+one_tenth_PI)*radius, y-sin(a+one_tenth_PI)*radius ,0);
 		}
     glEnd();
-
-	glColor3fv(color2);
-
-	glBegin(GL_QUADS);
-		glTexCoord2f (0.0, 0.0);
-		glVertex3f (x - radius/1.5f, y + radius/1.5f, 0.0);
-		glTexCoord2f (1.0, 0.0);
-		glVertex3f (x + radius/1.5f, y + radius/1.5f, 0.0);
-		glTexCoord2f (1.0, 1.0);
-		glVertex3f (x + radius/1.5f, y - radius/1.5f, 0.0);
-		glTexCoord2f (0.0, 1.0);
-		glVertex3f (x - radius/1.5f, y - radius/1.5f, 0.0);
-	glEnd();
 	
 }
 
@@ -81,9 +67,6 @@ void Mine::buildThePointsCountingForTheIntersection()
 		}
 }
 
-
-GLfloat Mine::color1[] = {0.0,0.0,0.0};
-GLfloat Mine::color2[] = {1.0,1.0,1.0};
 
 void Mine::updateTheRandMovementVector()
 {
