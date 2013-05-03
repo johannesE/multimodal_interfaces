@@ -23,7 +23,8 @@
 
 
 
-//Global cariables:
+//Global variables:
+props kinect
 
 GLsizei MOUSEx=0, MOUSEy=0;
 GLfloat SIDE=200;

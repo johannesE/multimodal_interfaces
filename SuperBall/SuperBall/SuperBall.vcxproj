@@ -33,9 +33,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="KinectSDK.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="KinectSDK.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -51,7 +53,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Program Files\Phidgets\Phidget21.lib;C:\Program Files\Phidgets\x86\Phidget21.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files\Phidgets\Phidget21.lib;C:\Program Files\Phidgets\x86\Phidget21.lib;Msdmo.lib;dmoguids.lib;amstrmid.lib;avrt.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;Kinect10.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -79,6 +81,7 @@
     <ClInclude Include="PhidgetManager.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="SpaceObject.h" />
+    <ClInclude Include="SpeechBasics.h" />
     <ClInclude Include="SuperBall.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture2.h" />
@@ -95,6 +98,7 @@
     <ClCompile Include="PhidgetManager.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="SpaceObject.cpp" />
+    <ClCompile Include="SpeechBasics.cpp" />
     <ClCompile Include="SuperBall.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture2.cpp" />
