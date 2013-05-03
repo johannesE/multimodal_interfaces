@@ -1,124 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="NewFilter1">
-      <UniqueIdentifier>{839a4efe-3225-44ca-be5d-a141a0a50c3c}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="bitmap2.cpp" />
+    <ClCompile Include="bmpLoader.c" />
+    <ClCompile Include="Diamond.cpp" />
+    <ClCompile Include="GamesContents.cpp" />
+    <ClCompile Include="Mine.cpp" />
+    <ClCompile Include="pcxLoader.c" />
+    <ClCompile Include="PhidgetManager.cpp" />
+    <ClCompile Include="Point2D.cpp" />
+    <ClCompile Include="SpaceObject.cpp" />
+    <ClCompile Include="SuperBall.cpp" />
+    <ClCompile Include="texture.cpp" />
+    <ClCompile Include="texture2.cpp" />
+    <ClCompile Include="tgaLoader.c" />
+    <ClCompile Include="KinectAudioStream.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SuperBall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Diamond.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PhidgetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpaceObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GamesContents.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Point2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="KinectSpeech.h">
-    <ClInclude Include="bmpLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pcxLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tgaLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glaux.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="bitmap2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="texture2.h">
-    <ClInclude Include="SpeechBasics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="bitmap2.h" />
+    <ClInclude Include="bmpLoader.h" />
+    <ClInclude Include="Diamond.h" />
+    <ClInclude Include="GamesContents.h" />
+    <ClInclude Include="glaux.h" />
+    <ClInclude Include="Mine.h" />
+    <ClInclude Include="pcxLoader.h" />
+    <ClInclude Include="PhidgetManager.h" />
+    <ClInclude Include="Point2D.h" />
+    <ClInclude Include="SpaceObject.h" />
+    <ClInclude Include="SuperBall.h" />
+    <ClInclude Include="texture.h" />
+    <ClInclude Include="texture2.h" />
+    <ClInclude Include="tgaLoader.h" />
+    <ClInclude Include="KinectAudioStream.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SuperBall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Diamond.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PhidgetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GamesContents.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Point2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bmpLoader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="pcxLoader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="KinectSpeech.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tgaLoader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bitmap2.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="texture2.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpeechBasics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="shaders.hlsl">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="images\bomb.jpg">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="bomb.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
+    <None Include="bomb.bmp" />
+    <None Include="images\bomb.jpg" />
+    <None Include="shaders.hlsl" />
   </ItemGroup>
 </Project>
