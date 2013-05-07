@@ -21,6 +21,8 @@
 #include "Point2D.h"
 #include "texture2.h"
 
+#include "stdafx.h"
+
 
 
 
@@ -101,23 +103,24 @@ void SuperBall::DoAction(TurtleAction action)
     {
     case TurtleActionForward:
 		//to do forward
-		printf("mOVING fORWARD");
+		superBallSPositionX-=10;
         break;
 
     case TurtleActionBackward:
-		//to do down
+		 superBallSPositionY-=10;
         break;
 
     case TurtleActionTurnRight:
-        //to do move right
-        break;
+superBallSPositionX+=10;;      
+ break;
 
     case TurtleActionTurnLeft:
-		//to do move left
-        break;
+ superBallSPositionY+=10;
+ break;
     }
 
 }
+
 
 SuperBall::SuperBall()
 {
@@ -757,6 +760,8 @@ phidgetManag->start();
 
 
 
+
+
  startgame();
 
 
@@ -806,8 +811,8 @@ glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjec
     glutMouseFunc(MouseButton);
 	glutMotionFunc(MouseMove);
     glutIdleFunc(spindisplay);
-glutSpecialFunc(specialKeys);
-glutKeyboardFunc(keyboard);
+	glutSpecialFunc(specialKeys);
+	glutKeyboardFunc(keyboard);
     glutMainLoop();
 
 }

@@ -7,9 +7,6 @@
           <item> forwards </item>
           <item> forward </item>
           <item> straight </item>
-		  <item> go forward </item>
-		  <item> pussy </item>
-		  <item> I love git </item>
         </one-of>
       </item>
       <item>
@@ -18,25 +15,18 @@
           <item> backward </item>
           <item> backwards </item>
           <item> back </item>
-		  <item> go backward </item>
-		  <item> scream </item>
-		  <item> motherfucker </item>
         </one-of>
       </item>
       <item>
         <tag>LEFT</tag>
         <one-of>
-          <item> left </item>
-		  <item> go left </item>
-		  <item> left boob </item>
+          <item> turn left </item>
         </one-of>
       </item>
       <item>
         <tag>RIGHT</tag>
         <one-of>
-          <item> right </item>
-		  <item> go right </item>
-		  <item> right boob </item>
+          <item> turn right </item>
         </one-of>
       </item>
     </one-of>

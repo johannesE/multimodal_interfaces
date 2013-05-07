@@ -5,7 +5,7 @@
 
 #pragma once
 
-
+#include <d2d1.h>
 //for the speech
 enum TurtleAction
 {
