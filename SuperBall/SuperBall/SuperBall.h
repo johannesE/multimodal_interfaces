@@ -37,7 +37,10 @@ public:
 	static std::list<SpaceObject*> getTheObjectsThatTheSuperBallIntersectsNow(std::list<Diamond*> diamonds, std::list<Mine*> mines);
 
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> ed0b146097d1aab1545aa53a13c35aa7c5e1dc35
 	
 };
 

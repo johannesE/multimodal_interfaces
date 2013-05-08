@@ -14,6 +14,7 @@
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture2.cpp" />
     <ClCompile Include="tgaLoader.c" />
+    <ClCompile Include="SpeechControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap2.h" />
@@ -30,6 +31,10 @@
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture2.h" />
     <ClInclude Include="tgaLoader.h" />
+    <ClInclude Include="SpeechControl.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="KinectAudioStream.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bomb.bmp" />

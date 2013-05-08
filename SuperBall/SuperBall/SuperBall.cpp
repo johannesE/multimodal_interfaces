@@ -98,6 +98,56 @@ int ButtonWIDTH = 200;
 bool ismoving;
 
 
+void SuperBall::speechAction(BallAction bAction){
+	switch(bAction){
+	case UP :
+		ismoving = true;
+		while(ismoving){
+			superBallSPositionY-=10*ballSpeed;
+		}
+		break;
+	case DOWN:
+		superBallSPositionY+=10*ballSpeed;
+		break;
+	case LEFT:
+		superBallSPositionX-=10*ballSpeed;
+		break;
+	case RIGHT:
+		superBallSPositionX+=10*ballSpeed;
+		break;
+	case NONE:
+		ismoving = false;
+
+
+	}
+}
+
+
+void keyboard(unsigned char key, int x, int y)
+{
+  switch (key)
+  {
+case 27: //Escape key
+fullScreenMode = false;
+glutReshapeWindow(windowWidth,windowHeight);
+glutPositionWindow(windowPosX,windowPosY);
+break;
+case 'a':
+superBallSPositionX-=10;
+break;
+case 'w':
+superBallSPositionY-=10;
+break;
+case 'd':
+superBallSPositionX+=10;
+break;
+case 's':
+superBallSPositionY+=10;
+break;
+  }
+//37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
+
+  }
 
 
 
