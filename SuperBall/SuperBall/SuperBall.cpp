@@ -21,13 +21,9 @@
 #include "Point2D.h"
 #include "texture2.h"
 
-<<<<<<< HEAD
-#include "stdafx.h"
+
 #include <NuiApi.h>
-=======
 
-
->>>>>>> 8c0a3bd7bba0039ce8e85d5b98d1c188bee5a398
 
 
 
@@ -126,6 +122,36 @@ void SuperBall::speechAction(BallAction bAction){
 
 	}
 }
+
+
+void keyboard(unsigned char key, int x, int y)
+{
+  switch (key)
+  {
+case 27: //Escape key
+fullScreenMode = false;
+glutReshapeWindow(windowWidth,windowHeight);
+glutPositionWindow(windowPosX,windowPosY);
+break;
+case 'a':
+superBallSPositionX-=10;
+break;
+case 'w':
+superBallSPositionY-=10;
+break;
+case 'd':
+superBallSPositionX+=10;
+break;
+case 's':
+superBallSPositionY+=10;
+break;
+
+//37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
+
+  }
+
+
+
 
 SuperBall::SuperBall()
 {
@@ -657,6 +683,8 @@ break;
    glutPostRedisplay();
 }
 
+
+
 void keyboard(unsigned char key, int x, int y)
 {
   switch (key)
@@ -824,5 +852,3 @@ glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjec
 
 }
 
-	HRESULT NuiGetSensorCount(
-         int *pCount)
