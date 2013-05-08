@@ -37,7 +37,6 @@ public:
 	static std::list<SpaceObject*> getTheObjectsThatTheSuperBallIntersectsNow(std::list<Diamond*> diamonds, std::list<Mine*> mines);
 
 
-	void DoAction(TurtleAction action);
 	
 };
 

@@ -145,7 +145,7 @@ break;
 case 's':
 superBallSPositionY+=10;
 break;
-
+  }
 //37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
 
   }

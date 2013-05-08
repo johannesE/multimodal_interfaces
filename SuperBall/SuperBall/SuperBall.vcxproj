@@ -133,6 +133,9 @@
     <ClInclude Include="Diamond.h" />
     <ClInclude Include="GamesContents.h" />
     <ClInclude Include="glaux.h" />
+    <ClInclude Include="KinectAudioStream.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="pcxLoader.h" />
     <ClInclude Include="PhidgetManager.h" />

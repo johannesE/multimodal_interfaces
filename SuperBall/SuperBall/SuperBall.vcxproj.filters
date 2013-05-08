@@ -32,6 +32,9 @@
     <ClInclude Include="texture2.h" />
     <ClInclude Include="tgaLoader.h" />
     <ClInclude Include="SpeechControl.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="KinectAudioStream.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bomb.bmp" />
