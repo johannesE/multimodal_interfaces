@@ -85,9 +85,7 @@ float bombsFactorForThierIndependentRandomMovement = 0.17f; //should be more or 
 
 bool gameOver = false;
 
-//for the speed
-int ballSpeed = 5;
-bool ismoving = false;
+
 
 GLuint texture_bomb;
 GLubyte* imageData;
@@ -97,58 +95,9 @@ int ButtonX = 50;
 int ButtonY = 50;
 int ButtonHEIGHT = 100;
 int ButtonWIDTH = 200;
+bool ismoving;
 
 
-void SuperBall::speechAction(BallAction bAction){
-	switch(bAction){
-	case UP :
-		ismoving = true;
-		while(ismoving){
-			superBallSPositionY-=10*ballSpeed;
-		}
-		break;
-	case DOWN:
-		superBallSPositionY+=10*ballSpeed;
-		break;
-	case LEFT:
-		superBallSPositionX-=10*ballSpeed;
-		break;
-	case RIGHT:
-		superBallSPositionX+=10*ballSpeed;
-		break;
-	case NONE:
-		ismoving = false;
-
-
-	}
-}
-
-
-void keyboard(unsigned char key, int x, int y)
-{
-  switch (key)
-  {
-case 27: //Escape key
-fullScreenMode = false;
-glutReshapeWindow(windowWidth,windowHeight);
-glutPositionWindow(windowPosX,windowPosY);
-break;
-case 'a':
-superBallSPositionX-=10;
-break;
-case 'w':
-superBallSPositionY-=10;
-break;
-case 'd':
-superBallSPositionX+=10;
-break;
-case 's':
-superBallSPositionY+=10;
-break;
-
-//37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
-
-  }
 
 
 
@@ -481,6 +430,11 @@ direction=Vector2D(0.0f, 0.0f - (*it)->posY());
 
 void updatePositionsOfObjects()
 {
+	//test
+	if(ismoving){
+		superBallSPositionY-=10;
+	}
+
 superBallSSpeedX += superBallSAX;
 superBallSSpeedY += superBallSAY;
 superBallSPositionX += superBallSSpeedX;
@@ -685,6 +639,40 @@ break;
 
 
 
+
+
+//for the speed
+int ballSpeed = 5;
+
+
+void speechAction(BallAction bAction){
+	switch(bAction){
+	case UP :
+		
+		superBallSPositionY-=10*ballSpeed;
+	 
+
+		break;
+	case DOWN:
+		superBallSPositionY+=10*ballSpeed;
+		break;
+	case LEFT:
+		superBallSPositionX-=10*ballSpeed;
+		break;
+	case RIGHT:
+		superBallSPositionX+=10*ballSpeed;
+		break;
+	case NONE:
+		ismoving = false;
+
+
+	}
+	
+}
+
+
+
+
 void keyboard(unsigned char key, int x, int y)
 {
   switch (key)
@@ -706,6 +694,14 @@ break;
 case 's':
 superBallSPositionY+=10;
 break;
+case 'm':
+	ismoving = false;
+break;
+
+case 'i':
+	ismoving = true ;
+	
+	break;
 
 //37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
 
