@@ -14,8 +14,6 @@
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture2.cpp" />
     <ClCompile Include="tgaLoader.c" />
-    <ClCompile Include="KinectAudioStream.cpp" />
-    <ClCompile Include="SpeechBasics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap2.h" />
@@ -32,21 +30,11 @@
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture2.h" />
     <ClInclude Include="tgaLoader.h" />
-    <ClInclude Include="KinectAudioStream.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="SpeechBasics.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bomb.bmp" />
     <None Include="images\bomb.jpg" />
     <None Include="shaders.hlsl" />
     <None Include="SpeechBasics-D2D.grxml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SpeechBasics.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Kinect.ico" />
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@
 #include "Point2D.h"
 #include "texture2.h"
 
-#include "stdafx.h"
+
 
 
 
@@ -84,6 +84,10 @@ float bombsFactorForThierIndependentRandomMovement = 0.17f; //should be more or 
 
 bool gameOver = false;
 
+//for the speed
+int ballSpeed = 5;
+bool ismoving = false;
+
 GLuint texture_bomb;
 GLubyte* imageData;
 
@@ -94,33 +98,29 @@ int ButtonHEIGHT = 100;
 int ButtonWIDTH = 200;
 
 
-void SuperBall::DoAction(TurtleAction action)
-{
-    // Number of degrees in a right angle.
-    const int DegreesInRightAngle = 90;
+void SuperBall::speechAction(BallAction bAction){
+	switch(bAction){
+	case UP :
+		ismoving = true;
+		while(ismoving){
+			superBallSPositionY-=10*ballSpeed;
+		}
+		break;
+	case DOWN:
+		superBallSPositionY+=10*ballSpeed;
+		break;
+	case LEFT:
+		superBallSPositionX-=10*ballSpeed;
+		break;
+	case RIGHT:
+		superBallSPositionX+=10*ballSpeed;
+		break;
+	case NONE:
+		ismoving = false;
 
-    switch (action)
-    {
-    case TurtleActionForward:
-		//to do forward
-		superBallSPositionX-=10;
-        break;
 
-    case TurtleActionBackward:
-		 superBallSPositionY-=10;
-        break;
-
-    case TurtleActionTurnRight:
-superBallSPositionX+=10;;      
- break;
-
-    case TurtleActionTurnLeft:
- superBallSPositionY+=10;
- break;
-    }
-
+	}
 }
-
 
 SuperBall::SuperBall()
 {

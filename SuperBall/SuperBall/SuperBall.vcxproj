@@ -132,16 +132,12 @@
     <ClInclude Include="bmpLoader.h" />
     <ClInclude Include="Diamond.h" />
     <ClInclude Include="GamesContents.h" />
-    <ClInclude Include="KinectAudioStream.h" />
     <ClInclude Include="glaux.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="pcxLoader.h" />
     <ClInclude Include="PhidgetManager.h" />
     <ClInclude Include="Point2D.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="SpaceObject.h" />
-    <ClInclude Include="SpeechBasics.h" />
-    <ClInclude Include="stdafx.h" />
     <ClInclude Include="SuperBall.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture2.h" />
@@ -152,13 +148,11 @@
     <ClCompile Include="bmpLoader.c" />
     <ClCompile Include="Diamond.cpp" />
     <ClCompile Include="GamesContents.cpp" />
-    <ClCompile Include="KinectAudioStream.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="pcxLoader.c" />
     <ClCompile Include="PhidgetManager.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="SpaceObject.cpp" />
-    <ClCompile Include="SpeechBasics.cpp" />
     <ClCompile Include="SuperBall.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture2.cpp" />
@@ -169,12 +163,6 @@
     <None Include="images\bomb.jpg" />
     <None Include="shaders.hlsl" />
     <None Include="SpeechBasics-D2D.grxml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SpeechBasics.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Kinect.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
