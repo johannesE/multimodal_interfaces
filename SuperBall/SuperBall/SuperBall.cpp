@@ -30,6 +30,7 @@
 
 //Global variables:
 
+int ballSpeed;
 
 GLsizei MOUSEx=0, MOUSEy=0;
 GLfloat SIDE=200;
@@ -121,33 +122,6 @@ void SuperBall::speechAction(BallAction bAction){
 
 	}
 }
-
-
-void keyboard(unsigned char key, int x, int y)
-{
-  switch (key)
-  {
-case 27: //Escape key
-fullScreenMode = false;
-glutReshapeWindow(windowWidth,windowHeight);
-glutPositionWindow(windowPosX,windowPosY);
-break;
-case 'a':
-superBallSPositionX-=10;
-break;
-case 'w':
-superBallSPositionY-=10;
-break;
-case 'd':
-superBallSPositionX+=10;
-break;
-case 's':
-superBallSPositionY+=10;
-break;
-  }
-//37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
-
-  }
 
 
 
@@ -688,11 +662,6 @@ break;
 }
 
 
-
-
-
-//for the speed
-int ballSpeed = 5;
 
 
 void speechAction(BallAction bAction){
