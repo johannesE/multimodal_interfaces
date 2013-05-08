@@ -22,7 +22,7 @@
 #include "texture2.h"
 
 #include "stdafx.h"
-
+#include <NuiApi.h>
 
 
 
@@ -740,6 +740,8 @@ void MouseMove(int x,int y)
 
 int main(int argc, char **argv)
 {
+
+
 superBallSPositionX = 300;
 superBallSPositionY= 400;
 superBallSRadius = 80;
@@ -816,3 +818,6 @@ glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjec
     glutMainLoop();
 
 }
+
+	HRESULT NuiGetSensorCount(
+         int *pCount)
