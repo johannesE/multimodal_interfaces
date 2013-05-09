@@ -132,3 +132,33 @@ void SpeechControl::ProcessSpeech()
 
     return;
 }
+
+BallAction SpeechControl::MapSpeechTagToAction(LPCWSTR pszSpeechTag)
+{
+    struct SpeechTagToAction
+    {
+        LPCWSTR pszSpeechTag;
+        BallAction action;
+    };
+    const SpeechTagToAction Map[] =
+    { //right side is superball.h
+        {L"FORWARD", UP},
+        {L"BACKWARD", DOWN},
+        {L"LEFT", LEFT},
+        {L"RIGHT", RIGHT},
+		{L"STOP", STOP}
+    };
+
+    BallAction action = NONE;
+
+    for (int i = 0; i < _countof(Map); ++i)
+    {
+        if (0 == wcscmp(Map[i].pszSpeechTag, pszSpeechTag))
+        {
+            action = Map[i].action;
+            break;
+        }
+    }
+
+    return action;
+}

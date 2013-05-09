@@ -14,6 +14,7 @@ enum BallAction
     DOWN,
     LEFT,
     RIGHT,
+	STOP,
     NONE
 };
 

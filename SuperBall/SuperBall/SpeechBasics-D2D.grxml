@@ -40,7 +40,7 @@
         </one-of>
       </item>
       <item>
-        <tag>NONE</tag>
+        <tag>STOP</tag>
         <one-of>
           <item> stop </item>
           <item> hold </item>
