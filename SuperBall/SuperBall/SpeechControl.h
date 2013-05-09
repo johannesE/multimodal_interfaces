@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SuperBall.h"
+
 #include "KinectAudioStream.h"
 #include "resource.h"
 #include "SuperBall.h" //for the turtle action enum
