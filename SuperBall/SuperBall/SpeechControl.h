@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "SuperBall.h"
 #include "KinectAudioStream.h"
 #include "resource.h"
 #include "SuperBall.h" //for the turtle action enum
@@ -27,6 +27,7 @@ class SpeechControl
 public:
 	SpeechControl(void);
 	~SpeechControl(void);
+	void SpeechControl::Run();
 
 private:
 	static LPCWSTR          GrammarFileName;

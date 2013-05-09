@@ -81,8 +81,8 @@ float sensor1and2firstToleranceIntervalAroundTheZeroValue = 40.0f;
 unsigned int milliSecondsIntervalForSpawningNewSpaceObjects = 2000;
 //unsigned int milliSecondsIntervalForMovingTheBombs =50;
 
-float bombsAttractionFactor = 0.17f;
-float bombsFactorForThierIndependentRandomMovement = 0.17f; //should be more or less the double of the attraction, or something like that
+float bombsAttractionFactor = 0.15f;
+float bombsFactorForThierIndependentRandomMovement = 0.20f; //should be more or less the double of the attraction, or something like that
 
 bool gameOver = false;
 
