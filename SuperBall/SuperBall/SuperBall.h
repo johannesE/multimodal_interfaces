@@ -2,6 +2,8 @@
 #include "SpaceObject.h"
 #include "Mine.h"
 #include <list>
+#include "SpeechControl.h"
+
 
 #pragma once
 
