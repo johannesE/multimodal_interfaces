@@ -15,6 +15,7 @@
     <ClCompile Include="texture2.cpp" />
     <ClCompile Include="tgaLoader.c" />
     <ClCompile Include="SpeechControl.cpp" />
+    <ClCompile Include="KinectAudioStream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap2.h" />

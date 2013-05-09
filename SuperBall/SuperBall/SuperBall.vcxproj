@@ -156,6 +156,7 @@
     <ClCompile Include="pcxLoader.c" />
     <ClCompile Include="PhidgetManager.cpp" />
     <ClCompile Include="Point2D.cpp" />
+    <ClCompile Include="KinectAudioStream.cpp" />
     <ClCompile Include="SpaceObject.cpp" />
     <ClCompile Include="SpeechControl.cpp" />
     <ClCompile Include="SuperBall.cpp" />
