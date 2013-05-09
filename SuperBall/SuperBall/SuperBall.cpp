@@ -708,7 +708,7 @@ glutReshapeWindow(windowWidth,windowHeight);
 glutPositionWindow(windowPosX,windowPosY);
 break;
 
-case 'a':
+case VK_OEM_MINUS:
 ismovingR = false;
 ismovingD = false;
 ismovingU = false;
