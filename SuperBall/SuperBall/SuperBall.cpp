@@ -71,7 +71,6 @@ GLfloat colorOfTheScore[3] = {1.0f, 0.0078f, 0.41960784f};
 
 PhidgetManager* phidgetManag;
 GamesContents* gamesContents;
-SpeechControl* speechcontrol;
 
 float sensor1and2zeroLevel = 500;
 double sensor1and2SizeOfTheValuesArea = 500.0; //we can at maximum add or remove this value to/from the zero level. With this we have the whole spectrum.
@@ -853,10 +852,6 @@ screenHeight = glutGet(GLUT_WINDOW_HEIGHT);//glutGet(GLUT_SCREEN_HEIGHT);
 
 phidgetManag = new PhidgetManager();
 phidgetManag->start();
-
-//speechcontrol = new SpeechControl();
-//speechcontrol->start();
-//speechcontrol->Run();
 
 
 

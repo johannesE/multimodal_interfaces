@@ -11,7 +11,7 @@ DEFINE_GUID(CLSID_ExpectedRecognizer, 0x495648e7, 0xf7ab, 0x4267, 0x8e, 0x0f, 0x
 
 
 
-SpeechControl::SpeechControl() : 
+SpeechControl::SpeechControl(void) : 
 //	m_pD2DFactory(NULL),
 //    m_pTurtleController(NULL),
     m_pNuiSensor(NULL),
@@ -34,7 +34,7 @@ SpeechControl::~SpeechControl(void)
 }
 
 
-void SpeechControl::start(){
+void start(){
 
 
 HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);

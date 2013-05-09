@@ -28,7 +28,6 @@ public:
 	SpeechControl(void);
 	~SpeechControl(void);
 	void SpeechControl::Run();
-	void SpeechControl::start();
 
 private:
 	static LPCWSTR          GrammarFileName;
