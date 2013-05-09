@@ -749,19 +749,15 @@ case 'o':
 
 		 superBallSRadius = superBallSRadius -10;
 	}
-
 	break;
 
 
 case 'p':
-
 	if (superBallSRadius <= 	superBallSRadiusMax)
 	{
 
 		 superBallSRadius = superBallSRadius +10;
 	}
- 
-
 	break;
 
 //37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
