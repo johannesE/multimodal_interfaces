@@ -14,6 +14,7 @@
 #include <phidget21.h> //for the Phidgets
 
 #include "PhidgetManager.h"
+#include "SpeechControl.h"
 
 #include <list>
 #include <typeinfo>
@@ -803,7 +804,7 @@ void MouseButton(int button,int state,int x,int y)
 {
 if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
 {
-printf("play again clicked \n");
+printf("play again clicked. Score was: (not yet implemented) \n");
 
 ismovingD = false;
 ismovingL = false;
@@ -854,10 +855,11 @@ screenHeight = glutGet(GLUT_WINDOW_HEIGHT);//glutGet(GLUT_SCREEN_HEIGHT);
 phidgetManag = new PhidgetManager();
 phidgetManag->start();
 
-//speechcontrol = new SpeechControl();
+printf("Constructing the speechControl... \n");
+speechcontrol = new SpeechControl();
+printf("speechcontrol constructed \n Starting it... \n");
 //speechcontrol->start();
-//speechcontrol->Run();
-
+printf("speechcontrol started \n");
 
 
 
