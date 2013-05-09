@@ -708,7 +708,7 @@ glutReshapeWindow(windowWidth,windowHeight);
 glutPositionWindow(windowPosX,windowPosY);
 break;
 
-case VK_OEM_MINUS:
+case 'a':
 ismovingR = false;
 ismovingD = false;
 ismovingU = false;
@@ -743,6 +743,26 @@ case VK_SPACE:
 	ismovingD = false;
 break;
 
+case 'o':
+		if (superBallSRadius >= 	superBallSRadiusMin)
+	{
+
+		 superBallSRadius = superBallSRadius -10;
+	}
+
+	break;
+
+
+case 'p':
+
+	if (superBallSRadius <= 	superBallSRadiusMax)
+	{
+
+		 superBallSRadius = superBallSRadius +10;
+	}
+ 
+
+	break;
 
 //37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
 

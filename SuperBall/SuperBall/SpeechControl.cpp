@@ -117,9 +117,11 @@ void SpeechControl::ProcessSpeech()
                             const SPPHRASEPROPERTY* pSemanticTag = pPhrase->pProperties->pFirstChild;
                             if (pSemanticTag->SREngineConfidence > ConfidenceThreshold)
                             {
+								/*
                                 BallAction action = MapSpeechTagToAction(pSemanticTag->pszValue);
 								SuperBall::speechAction(action);
-                            }
+                            */
+							}
                         }
                         ::CoTaskMemFree(pPhrase);
                     }
