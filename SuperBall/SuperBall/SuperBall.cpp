@@ -30,7 +30,7 @@
 
 //Global variables:
 
-int ballSpeed;
+double ballSpeed = 1;
 
 GLsizei MOUSEx=0, MOUSEy=0;
 GLfloat SIDE=200;
@@ -96,32 +96,9 @@ int ButtonX = 50;
 int ButtonY = 50;
 int ButtonHEIGHT = 100;
 int ButtonWIDTH = 200;
-bool ismoving;
+bool ismovingU, ismovingR, ismovingL, ismovingD;
 
 
-void SuperBall::speechAction(BallAction bAction){
-	switch(bAction){
-	case UP :
-		ismoving = true;
-		while(ismoving){
-			superBallSPositionY-=10*ballSpeed;
-		}
-		break;
-	case DOWN:
-		superBallSPositionY+=10*ballSpeed;
-		break;
-	case LEFT:
-		superBallSPositionX-=10*ballSpeed;
-		break;
-	case RIGHT:
-		superBallSPositionX+=10*ballSpeed;
-		break;
-	case NONE:
-		ismoving = false;
-
-
-	}
-}
 
 
 
@@ -455,10 +432,23 @@ direction=Vector2D(0.0f, 0.0f - (*it)->posY());
 void updatePositionsOfObjects()
 {
 	//test
-	if(ismoving){
-		superBallSPositionY-=10;
+	if(ismovingU){
+		superBallSPositionY-=10 *ballSpeed;
+	}
+	
+if(ismovingD){
+		superBallSPositionY+=10 *ballSpeed;
 	}
 
+	if(ismovingL){
+		superBallSPositionX-=10 *ballSpeed;
+	}
+
+	if(ismovingR){
+		superBallSPositionX+=10 *ballSpeed;
+	}
+
+	
 superBallSSpeedX += superBallSAX;
 superBallSSpeedY += superBallSAY;
 superBallSPositionX += superBallSSpeedX;
@@ -664,26 +654,42 @@ break;
 
 
 
-void speechAction(BallAction bAction){
+void SuperBall::speechAction(BallAction bAction){
 	switch(bAction){
 	case UP :
-		
-		superBallSPositionY-=10*ballSpeed;
-	 
-
+ismovingL = false;
+ismovingR = false;
+ismovingD = false;
+ismovingU = true;
 		break;
+
 	case DOWN:
-		superBallSPositionY+=10*ballSpeed;
+ismovingR = false;
+ismovingL = false;
+ismovingU = false;
+ismovingD = true;
 		break;
-	case LEFT:
-		superBallSPositionX-=10*ballSpeed;
-		break;
-	case RIGHT:
-		superBallSPositionX+=10*ballSpeed;
-		break;
-	case NONE:
-		ismoving = false;
 
+	case LEFT:
+ismovingR = false;
+ismovingD = false;
+ismovingU = false;
+ismovingL = true;
+		break;
+
+	case RIGHT:
+ismovingL = false;
+ismovingU = false;
+ismovingD = false;
+ismovingR = true;
+		break;
+
+	case NONE:
+ismovingU = false;
+ismovingR = false;
+ismovingL = false;
+ismovingD = false;
+	break;
 
 	}
 	
@@ -701,26 +707,42 @@ fullScreenMode = false;
 glutReshapeWindow(windowWidth,windowHeight);
 glutPositionWindow(windowPosX,windowPosY);
 break;
+
 case 'a':
-superBallSPositionX-=10;
-break;
-case 'w':
-superBallSPositionY-=10;
-break;
-case 'd':
-superBallSPositionX+=10;
-break;
-case 's':
-superBallSPositionY+=10;
-break;
-case 'm':
-	ismoving = false;
+ismovingR = false;
+ismovingD = false;
+ismovingU = false;
+ismovingL = true;
 break;
 
-case 'i':
-	ismoving = true ;
-	
-	break;
+case 'w':
+ismovingL = false;
+ismovingR = false;
+ismovingD = false;
+ismovingU = true;
+break;
+
+case 'd':
+ismovingL = false;
+ismovingU = false;
+ismovingD = false;
+ismovingR = true;
+break;
+
+case 's':
+ismovingR = false;
+ismovingL = false;
+ismovingU = false;
+ismovingD = true;
+break;
+
+case VK_SPACE:
+	ismovingU = false;
+	ismovingR = false;
+	ismovingL = false;
+	ismovingD = false;
+break;
+
 
 //37(left arrow); 38(up arrow); 39(right arrow); 40(down arrow)
 
@@ -765,6 +787,13 @@ void MouseButton(int button,int state,int x,int y)
 if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
 {
 printf("play again clicked \n");
+
+ismovingD = false;
+ismovingL = false;
+ismovingR = false;
+ismovingU = false;
+
+
 startgame();
 gameOver = false;
 glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
