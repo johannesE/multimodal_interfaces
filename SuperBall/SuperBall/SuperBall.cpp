@@ -802,6 +802,8 @@ exit(0);
 /* called when a mouse button is pressed or released */
 void MouseButton(int button,int state,int x,int y)
 {
+	
+
 if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
 {
 printf("play again clicked. Score was: (not yet implemented) \n");
@@ -827,6 +829,8 @@ glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjec
 void MouseMove(int x,int y)
 {
 /* Pass information about the position of the mouse to pui */
+	
+
 
 }
 
