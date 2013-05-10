@@ -4,6 +4,8 @@
 #include "KinectAudioStream.h"
 #include "resource.h"
 #include "SuperBall.h" //for the turtle action enum
+#include <thread>
+#include <windows.system.threading.h>
 
 // For configuring DMO properties
 #include <wmcodecdsp.h>
@@ -27,10 +29,10 @@ class SpeechControl
 public:
 	SpeechControl(void);
 	~SpeechControl(void);
-	void SpeechControl::Run();
-	void SpeechControl::start();
+	//void SpeechControl::Run();
+	//static void SpeechControl::start();
 
-private:
+
 	static LPCWSTR          GrammarFileName;
 
 	// Current Kinect sensor

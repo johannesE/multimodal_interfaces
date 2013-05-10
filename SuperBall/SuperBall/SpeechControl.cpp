@@ -33,34 +33,18 @@ SpeechControl::~SpeechControl(void)
     }
 }
 
+void Run(){
+	printf("Run() is called \n");
+		SpeechControl* spct = new SpeechControl();
 
-void SpeechControl::start(){
-
-
-HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
-
-    if (SUCCEEDED(hr))
-    {
-        {
-            SpeechControl application;
-            application.Run();
-        }
-
-        CoUninitialize();
-    }
-
-
-}
-
-void SpeechControl::Run(){
-	MSG       msg = {0};
+		MSG       msg = {0};
 
 	    const int eventCount = 1;
 		HANDLE hEvents[eventCount];
 
 	    while (WM_QUIT != msg.message)
     {
-        hEvents[0] = m_hSpeechEvent;
+        hEvents[0] = spct->m_hSpeechEvent;
 
         // Check to see if we have either a message (by passing in QS_ALLINPUT)
         // Or a speech event (hEvents)
@@ -69,7 +53,7 @@ void SpeechControl::Run(){
         // Check if this is an event we're waiting on and not a timeout or message
         if (WAIT_OBJECT_0 == dwEvent)
         {
-            ProcessSpeech();
+            spct->ProcessSpeech();
         }
 
         if (PeekMessageW(&msg, NULL, 0, 0, PM_REMOVE))
@@ -87,6 +71,30 @@ void SpeechControl::Run(){
     }
 
 }
+
+
+
+void start(){
+
+
+HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
+
+    if (SUCCEEDED(hr))
+    {
+        {
+            printf("creating the thread for speechControl \n");
+            std::thread t(Run);
+			printf("cthread created ... now joining ... \n");
+			t.detach();
+			printf("speechControl joined \n");
+        }
+
+        CoUninitialize();
+    }
+
+
+}
+
 
 void SpeechControl::ProcessSpeech()
 {
@@ -117,10 +125,10 @@ void SpeechControl::ProcessSpeech()
                             const SPPHRASEPROPERTY* pSemanticTag = pPhrase->pProperties->pFirstChild;
                             if (pSemanticTag->SREngineConfidence > ConfidenceThreshold)
                             {
-								/*
+								
                                 BallAction action = MapSpeechTagToAction(pSemanticTag->pszValue);
 								SuperBall::speechAction(action);
-                            */
+                           
 							}
                         }
                         ::CoTaskMemFree(pPhrase);

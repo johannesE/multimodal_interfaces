@@ -1,7 +1,6 @@
 #include "SuperBall.h"
 
 #include <time.h>
-#include "SuperBall.h"
 #include <math.h>
 #include <string.h>
 #include <stdio.h> //for the Phidgets
@@ -23,10 +22,11 @@
 #include "texture2.h"
 
 
+
 #include <NuiApi.h>
 
 
-
+extern void start();
 
 
 //Global variables:
@@ -855,10 +855,8 @@ screenHeight = glutGet(GLUT_WINDOW_HEIGHT);//glutGet(GLUT_SCREEN_HEIGHT);
 phidgetManag = new PhidgetManager();
 phidgetManag->start();
 
-printf("Constructing the speechControl... \n");
-speechcontrol = new SpeechControl();
-printf("speechcontrol constructed \n Starting it... \n");
-//speechcontrol->start();
+printf("Starting SpeechControl... \n");
+start();
 printf("speechcontrol started \n");
 
 
