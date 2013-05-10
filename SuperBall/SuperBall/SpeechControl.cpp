@@ -410,19 +410,23 @@ HRESULT SpeechControl::InitializeAudioStream()
 HRESULT SpeechControl::CreateSpeechRecognizer()
 {
     ISpObjectToken *pEngineToken = NULL;
-    
+    std::cout << "CreateSpeechRecognizer";
     HRESULT hr = CoCreateInstance(CLSID_SpInprocRecognizer, NULL, CLSCTX_INPROC_SERVER, __uuidof(ISpRecognizer), (void**)&m_pSpeechRecognizer);
-
+	 std::cout << "CreateSpeechRecognizer 2";
     if (SUCCEEDED(hr))
     {
+		 std::cout << "CreateSpeechRecognizer SUCCEEDED(hr)";
         m_pSpeechRecognizer->SetInput(m_pSpeechStream, FALSE);
+		std::cout << "CreateSpeechRecognizer SetInput";
         hr = SpFindBestToken(SPCAT_RECOGNIZERS,L"Language=409;Kinect=True",NULL,&pEngineToken);
 
         if (SUCCEEDED(hr))
         {
+			std::cout << "CreateSpeechRecognizer SUCCEEDED(hr) twice";
             m_pSpeechRecognizer->SetRecognizer(pEngineToken);
+			std::cout << "CreateSpeechRecognizer SetRecognizer";
             hr = m_pSpeechRecognizer->CreateRecoContext(&m_pSpeechContext);
-
+			std::cout << "CreateSpeechRecognizer CreateRecoContext";
             // For long recognition sessions (a few hours or more), it may be beneficial to turn off adaptation of the acoustic model. 
             // This will prevent recognition accuracy from degrading over time.
             //if (SUCCEEDED(hr))
