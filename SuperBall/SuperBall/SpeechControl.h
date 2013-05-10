@@ -56,7 +56,7 @@ public:
     // Event triggered when we detect speech recognition
     HANDLE                  m_hSpeechEvent;
 
-	//static LRESULT CALLBACK MessageRouter(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+	static LRESULT CALLBACK MessageRouter(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 	/// <summary>
     /// Create the first connected Kinect found.
@@ -72,7 +72,7 @@ public:
     /// <param name="wParam">message data</param>
     /// <param name="lParam">additional message data</param>
     /// <returns>result of message processing</returns>
-    LRESULT CALLBACK        DlgProc( UINT message, WPARAM wParam, LPARAM lParam);
+    LRESULT CALLBACK SpeechControl::DlgProc( UINT message);
 
     /// <summary>
     /// Initialize Kinect audio stream object.

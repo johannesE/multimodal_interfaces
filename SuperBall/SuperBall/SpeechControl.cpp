@@ -18,7 +18,7 @@ DEFINE_GUID(CLSID_ExpectedRecognizer, 0x495648e7, 0xf7ab, 0x4267, 0x8e, 0x0f, 0x
 
 SpeechControl::SpeechControl() : 
 //	m_pD2DFactory(NULL),
-//    m_pTurtleController(NULL),
+//  m_pTurtleController(NULL),
     m_pNuiSensor(NULL),
     m_pKinectAudioStream(NULL),
     m_pSpeechStream(NULL),
@@ -27,6 +27,11 @@ SpeechControl::SpeechControl() :
     m_pSpeechGrammar(NULL),
     m_hSpeechEvent(INVALID_HANDLE_VALUE)
 {
+	HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
+	if(! SUCCEEDED(hr))
+	{
+		std::cout << "error. Could not initialize coinitializeEx. \n";
+	}
 }
 
 
@@ -48,9 +53,12 @@ void Run(){
 		HANDLE hEvents[eventCount];
 
 
+		spct->DlgProc(WM_INITDIALOG);
+
+
 	    while (WM_QUIT != msg.message)
 		{
-		
+
         hEvents[0] = spct->m_hSpeechEvent;
 
         // Check to see if we have either a message (by passing in QS_ALLINPUT)
@@ -167,7 +175,27 @@ void SpeechControl::ProcessSpeech()
 /// <returns>result of message processing</returns>
 
 //LRESULT CALLBACK SpeechControl::MessageRouter(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK SpeechControl::MessageRouter(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    SpeechControl* pThis = NULL;
+    
+    if (WM_INITDIALOG == uMsg)
+    {
+        pThis = reinterpret_cast<SpeechControl*>(lParam);
+        //SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pThis));
+    }
+    else
+    {
+        pThis = reinterpret_cast<SpeechControl*>(::GetWindowLongPtr(hWnd, GWLP_USERDATA));
+    }
 
+    if (NULL != pThis)
+    {
+        return pThis->DlgProc(uMsg);
+    }
+
+    return 0;
+}
 
 
 BallAction SpeechControl::MapSpeechTagToAction(LPCWSTR pszSpeechTag)
@@ -464,12 +492,12 @@ HRESULT SpeechControl::StartSpeechRecognition()
 void SpeechControl::SetStatusMessage(const WCHAR* szMessage)
 {
 	printf("STATUS MESSAGE: ");
-	std::cout << szMessage;
+	std::cout << szMessage << "\n";
     //SendDlgItemMessageW IDC_STATUS, WM_SETTEXT, 0, (LPARAM)szMessage);
 } 
 
 
-LRESULT CALLBACK SpeechControl::DlgProc(UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK SpeechControl::DlgProc( UINT message)
 {
     LRESULT result = FALSE;
 
@@ -483,10 +511,12 @@ LRESULT CALLBACK SpeechControl::DlgProc(UINT message, WPARAM wParam, LPARAM lPar
             HRESULT hr = CreateFirstConnected();
             if (FAILED(hr))
             {
+				printf("Could not connect any kinect");
                 break;
             }
 
             SetStatusMessage(L"Say: \"Forward\", \"Back\", \"Turn Left\" or \"Turn Right\"");
+
 
             result = FALSE;
             break;
