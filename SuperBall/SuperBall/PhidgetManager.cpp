@@ -195,7 +195,7 @@ void PhidgetManager::start()
 
 	//get the program to wait for an interface kit device to be attached
 	printf("Waiting for the Phidgets interface kit to be attached....");
-	if((result = CPhidget_waitForAttachment((CPhidgetHandle)ifKit, 6000)))
+	if((result = CPhidget_waitForAttachment((CPhidgetHandle)ifKit, 100)))
 	{
 		CPhidget_getErrorDescription(result, &err);
 		printf("\nProblem waiting for attachment: %s\n", err);

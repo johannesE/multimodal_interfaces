@@ -1,6 +1,8 @@
 #include "SpeechControl.h"
 #include "stdafx.h"
 #include "resource.h"
+#include <iostream>
+#include <stdlib.h>
 
 #define INITGUID
 #include <guiddef.h>
@@ -45,8 +47,10 @@ void Run(){
 	    const int eventCount = 1;
 		HANDLE hEvents[eventCount];
 
+
 	    while (WM_QUIT != msg.message)
-    {
+		{
+		
         hEvents[0] = spct->m_hSpeechEvent;
 
         // Check to see if we have either a message (by passing in QS_ALLINPUT)
@@ -56,11 +60,14 @@ void Run(){
         // Check if this is an event we're waiting on and not a timeout or message
         if (WAIT_OBJECT_0 == dwEvent)
         {
+			printf("there has been a speech event \n");
             spct->ProcessSpeech();
         }
 
         if (PeekMessageW(&msg, NULL, 0, 0, PM_REMOVE))
         {
+
+			printf("something unknown is happening \n");
            /* // If a dialog message will be taken care of by the dialog proc
             if ((hWndApp != NULL) && IsDialogMessageW(hWndApp, &msg))
             {
@@ -74,6 +81,7 @@ void Run(){
     }
 
 }
+
 
 
 
@@ -101,6 +109,7 @@ HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
 
 void SpeechControl::ProcessSpeech()
 {
+	printf("processing speech \n");
     const float ConfidenceThreshold = 0.3f;
 
     SPEVENT curEvent;
@@ -128,9 +137,11 @@ void SpeechControl::ProcessSpeech()
                             const SPPHRASEPROPERTY* pSemanticTag = pPhrase->pProperties->pFirstChild;
                             if (pSemanticTag->SREngineConfidence > ConfidenceThreshold)
                             {
-								
+								printf("Calling the Speech Action with ");
                                 BallAction action = MapSpeechTagToAction(pSemanticTag->pszValue);
+								std::cout << action << "\n";
 								SuperBall::speechAction(action);
+								printf("The speech Action was called \n");
                            
 							}
                         }
@@ -146,8 +157,22 @@ void SpeechControl::ProcessSpeech()
     return;
 }
 
+/// <summary>
+/// Handles window messages, passes most to the class instance to handle
+/// </summary>
+/// <param name="hWnd">window message is for</param>
+/// <param name="uMsg">message</param>
+/// <param name="wParam">message data</param>
+/// <param name="lParam">additional message data</param>
+/// <returns>result of message processing</returns>
+
+//LRESULT CALLBACK SpeechControl::MessageRouter(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+
+
+
 BallAction SpeechControl::MapSpeechTagToAction(LPCWSTR pszSpeechTag)
 {
+	printf("mapping the tag to an action \n");
     struct SpeechTagToAction
     {
         LPCWSTR pszSpeechTag;
@@ -177,6 +202,7 @@ BallAction SpeechControl::MapSpeechTagToAction(LPCWSTR pszSpeechTag)
 }
 HRESULT SpeechControl::CreateFirstConnected()
 {
+	printf("creating the kinect connection \n");
     INuiSensor * pNuiSensor;
     HRESULT hr;
 
@@ -213,8 +239,10 @@ HRESULT SpeechControl::CreateFirstConnected()
     {
         // Initialize the Kinect and specify that we'll be using audio signal
         hr = m_pNuiSensor->NuiInitialize(NUI_INITIALIZE_FLAG_USES_AUDIO); 
+		printf("initializing the kinect \n");
         if (FAILED(hr))
         {
+
             // Some other application is streaming from the same Kinect sensor
             SafeRelease(m_pNuiSensor);
         }
@@ -223,6 +251,7 @@ HRESULT SpeechControl::CreateFirstConnected()
     if (NULL == m_pNuiSensor || FAILED(hr))
     {
         SetStatusMessage(L"No ready Kinect found!");
+		printf("no ready kinect found \n");
         return E_FAIL;
     }
 
@@ -230,6 +259,7 @@ HRESULT SpeechControl::CreateFirstConnected()
     if (FAILED(hr))
     {
         SetStatusMessage(L"Could not initialize audio stream.");
+		printf("could not initialize audio stream \n");
         return hr;
     }
 
@@ -237,25 +267,38 @@ HRESULT SpeechControl::CreateFirstConnected()
     if (FAILED(hr))
     {
         SetStatusMessage(L"Could not create speech recognizer. Please ensure that Microsoft Speech SDK and other sample requirements are installed.");
-        return hr;
+        printf("recognizer not created \n");
+		return hr;
     }
 
     hr = LoadSpeechGrammar();
     if (FAILED(hr))
     {
         SetStatusMessage(L"Could not load speech grammar. Please ensure that grammar configuration file was properly deployed.");
-        return hr;
+        printf("grammar not found \n");
+		return hr;
     }
 
     hr = StartSpeechRecognition();
     if (FAILED(hr))
     {
         SetStatusMessage(L"Could not start recognizing speech.");
+		printf("could not start recognizing speech \n");
         return hr;
     }
 
     return hr;
 }
+
+/// <summary>
+/// Handle windows messages for the class instance
+/// </summary>
+/// <param name="hWnd">window message is for</param>
+/// <param name="uMsg">message</param>
+/// <param name="wParam">message data</param>
+/// <param name="lParam">additional message data</param>
+/// <returns>result of message processing</returns>
+
 HRESULT SpeechControl::InitializeAudioStream()
 {
     INuiAudioBeam*      pNuiAudioSource = NULL;
@@ -393,6 +436,7 @@ HRESULT SpeechControl::LoadSpeechGrammar()
 /// </returns>
 HRESULT SpeechControl::StartSpeechRecognition()
 {
+	printf("speech recognition started");
     HRESULT hr = m_pKinectAudioStream->StartCapture();
 
     if (SUCCEEDED(hr))
@@ -419,5 +463,72 @@ HRESULT SpeechControl::StartSpeechRecognition()
 
 void SpeechControl::SetStatusMessage(const WCHAR* szMessage)
 {
-    // SendDlgItemMessageW(m_hWnd, IDC_STATUS, WM_SETTEXT, 0, (LPARAM)szMessage);
+	printf("STATUS MESSAGE: ");
+	std::cout << szMessage;
+    //SendDlgItemMessageW IDC_STATUS, WM_SETTEXT, 0, (LPARAM)szMessage);
 } 
+
+
+LRESULT CALLBACK SpeechControl::DlgProc(UINT message, WPARAM wParam, LPARAM lParam)
+{
+    LRESULT result = FALSE;
+
+    switch (message)
+    {
+        case WM_INITDIALOG:
+        {
+		
+
+            // Look for a connected Kinect, and create it if found
+            HRESULT hr = CreateFirstConnected();
+            if (FAILED(hr))
+            {
+                break;
+            }
+
+            SetStatusMessage(L"Say: \"Forward\", \"Back\", \"Turn Left\" or \"Turn Right\"");
+
+            result = FALSE;
+            break;
+        }
+
+        case WM_PAINT:
+        {
+            PAINTSTRUCT ps;
+//            BeginPaint(hWnd, &ps);
+
+			//here it would draw something
+            //m_pTurtleController->Draw();
+			printf("it would draw the turtle now \n");
+
+//            EndPaint(hWnd, &ps);
+            result = TRUE;
+            break;
+        }
+
+        // If the titlebar X is clicked, destroy app
+        case WM_CLOSE:
+			printf("closing the audio stream and the speech recognizer \n");
+            if (NULL != m_pKinectAudioStream)
+            {
+                m_pKinectAudioStream->StopCapture();
+            }
+
+            if (NULL != m_pSpeechRecognizer)
+            {
+                m_pSpeechRecognizer->SetRecoState(SPRST_INACTIVE);
+            }
+
+//            DestroyWindow(hWnd);
+            result = TRUE;
+            break;
+
+        case WM_DESTROY:
+            // Quit the main message pump
+            PostQuitMessage(0);
+            result = TRUE;
+            break;
+    }
+
+    return result;
+}
