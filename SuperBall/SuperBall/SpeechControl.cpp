@@ -2,6 +2,9 @@
 #include "stdafx.h"
 #include "resource.h"
 
+#define INITGUID
+#include <guiddef.h>
+
 LPCWSTR SpeechControl::GrammarFileName = L"SpeechBasics-D2D.grxml";
 
 // This is the class ID we expect for the Microsoft Speech recognizer.
