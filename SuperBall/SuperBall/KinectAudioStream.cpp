@@ -9,6 +9,10 @@
 // </summary>
 //------------------------------------------------------------------------------
 
+	//I need to download and reference sapi.h    <--------------------------------------------
+
+/*
+
 #include "stdafx.h"
 #include "KinectAudioStream.h"
 #include <stdio.h>
@@ -30,7 +34,7 @@ KinectAudioStream::KinectAudioStream(IMediaObject *pKinectDmo) :
     m_pKinectDmo = pKinectDmo;
     InitializeCriticalSection(&m_Lock);
 }
-
+	  
 /// <summary>
 /// KinectAudioStream destructor.
 /// </summary>
@@ -456,3 +460,4 @@ DWORD WINAPI KinectAudioStream::CaptureThread()
     return 1;
 }
 
+*/

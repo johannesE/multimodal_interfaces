@@ -1,17 +1,17 @@
+/*
 #pragma once
 
 
 #include "KinectAudioStream.h"
 #include "resource.h"
 #include "SuperBall.h" //for the turtle action enum
-#include <thread>
-#include <windows.system.threading.h>
 
 // For configuring DMO properties
 #include <wmcodecdsp.h>
 
 // For FORMAT_WaveFormatEx and such
 #include <uuids.h>
+
 
 // For Kinect SDK APIs
 #include <NuiApi.h>
@@ -22,7 +22,9 @@
 //       Speech SDK installation directory before listing the default system include and library directories,
 //       which might contain a version of SAPI that is not appropriate for use together with Kinect sensor.
 #include <sapi.h>
-#include <sphelper.h>
+
+
+//sorry, but I have to deactivete this (DK): #include <sphelper.h>
 
 class SpeechControl
 {
@@ -123,4 +125,6 @@ public:
     /// <param name="szMessage">message to display.</param>
     void                    SetStatusMessage(const WCHAR* szMessage);
 };
+
+*/
 

@@ -42,5 +42,7 @@
     <None Include="images\bomb.jpg" />
     <None Include="shaders.hlsl" />
     <None Include="SpeechBasics-D2D.grxml" />
+    <None Include="..\images\config_1.jpg" />
+    <None Include="..\images\config_2.jpg" />
   </ItemGroup>
 </Project>

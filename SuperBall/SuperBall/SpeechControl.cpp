@@ -1,3 +1,4 @@
+/* 
 #include "SpeechControl.h"
 #include "stdafx.h"
 #include "resource.h"
@@ -76,12 +77,12 @@ void Run(){
         {
 
 			printf("something unknown is happening \n");
-           /* // If a dialog message will be taken care of by the dialog proc
+           // If a dialog message will be taken care of by the dialog proc
             if ((hWndApp != NULL) && IsDialogMessageW(hWndApp, &msg))
             {
                 continue;
             }
-			*/
+			
 
             TranslateMessage(&msg);
             DispatchMessageW(&msg);
@@ -566,3 +567,7 @@ LRESULT CALLBACK SpeechControl::DlgProc( UINT message)
 
     return result;
 }
+
+
+
+*/

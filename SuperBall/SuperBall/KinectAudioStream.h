@@ -8,6 +8,9 @@
 //     - KinectAudioStream: IStream implementation that wraps Kinect audio DMO.
 // </summary>
 //------------------------------------------------------------------------------
+
+/*
+
 #pragma once
 
 // For IMediaObject and related interfaces
@@ -290,3 +293,6 @@ private:
         return (m_hStopEvent != NULL) && (WaitForSingleObject(m_hStopEvent,0) != WAIT_OBJECT_0);
     }
 };
+
+
+*/
