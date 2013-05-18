@@ -34,7 +34,7 @@
 double ballSpeed = 1;
 
 
-
+extern void start_the_Thread_with_the_Socket_TCP_server();
 
 GLsizei MOUSEx=0, MOUSEy=0;
 GLfloat SIDE=200;
@@ -916,6 +916,9 @@ glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjec
     glutIdleFunc(spindisplay);
 	glutSpecialFunc(specialKeys);
 	glutKeyboardFunc(keyboard);
+
+	start_the_Thread_with_the_Socket_TCP_server();
+
     glutMainLoop();
 
 }

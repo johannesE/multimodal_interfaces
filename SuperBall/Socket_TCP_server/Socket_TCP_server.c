@@ -1,7 +1,7 @@
 #include <winsock2.h>
 #pragma comment(lib, "ws2_32.lib")
 
-#include <cstdio>
+#include "stdio.h"
 
 #include <pthread.h>
 
@@ -24,7 +24,7 @@ ra float\0
 
 
 
-void* threadsTask( void* ptVoid)
+void run()
 {
     WSADATA WSAData;
     SOCKET sock;
@@ -151,7 +151,7 @@ void* threadsTask( void* ptVoid)
 
 	scanf("%s",&subbuff);
 
-    return 0;
+    return;
 }
 
 
@@ -162,8 +162,8 @@ int main(int argc, char **argv)
 
 
 	printf("Launching the thread\n");
-    pthread_create(&thread, NULL, threadsTask, NULL);
-    printf("Thread launched.\n");
+    pthread_create(&thread, NULL, run, NULL);
+    
 
 
 	/* Wait for thread to finish */

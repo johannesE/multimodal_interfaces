@@ -5,11 +5,11 @@
 
 #include <pthread.h>
 
-//#include "SuperBall.h";
+#include "SuperBall.h";
 
 /*
 
-Message format:
+Message format: (strings)
 
 vx float\0
 
@@ -109,16 +109,17 @@ void* threadsTask( void* ptVoid)
 				{
 					case 'v': 
 					{
-						if(Buffer[1]=='x') printf("Server: update for vx: %f\n",parameter); //SuperBall::update_vX(parameter);
+						if(Buffer[1]=='x') { printf("Server: update for vx: %f\n",parameter);  SuperBall::update_vX(parameter); }
 						
-						else if(Buffer[1]=='y') printf("Server: update for vy: %f\n",parameter);  //SuperBall::update_vY(parameter);
+						else if(Buffer[1]=='y') { printf("Server: update for vy: %f\n",parameter);  SuperBall::update_vY(parameter); }
 						
 						break;
 					}
 					case 'r':
 					{
-						 printf("Server: update for the radius: %f\n",parameter); //SuperBall::updateRadius(parameter);
-						break;
+						 printf("Server: update for the radius: %f\n",parameter); 
+						 SuperBall::updateRadius(parameter);
+						 break;
 					}
 				}
 
@@ -143,19 +144,19 @@ void* threadsTask( void* ptVoid)
 	
 
 	closesocket(sock);
-	printf("closesocket()\n");
+	printf("Server: closesocket()\n");
 	
 	WSACleanup();
 
-	printf("\nBye");
+	printf("\nServer: Bye.\n");
 
-	scanf("%s",&subbuff);
+	//scanf("%s",&subbuff);
 
     return 0;
 }
 
-
-int main(int argc, char **argv)
+//should be declared as extern in other files that use it:
+void start_the_Thread_with_the_Socket_TCP_server()
 {
 	
 	pthread_t thread;
@@ -167,6 +168,6 @@ int main(int argc, char **argv)
 
 
 	/* Wait for thread to finish */
-   pthread_join(thread, NULL);
+   //pthread_join(thread, NULL);
     
 }

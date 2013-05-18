@@ -1,0 +1,26 @@
+
+
+
+
+
+For Windows, download and unzip the files of the Posix Threads for Windows.
+Downloadable from: http://sourceware.org/pthreads-win32/
+
+
+
+
+
+
+Linker--> Additional dependencies:
+
+pthreads-w32-2-9-1-release\Pre-built.2\lib\x86\pthreadVC2.lib
+pthreads-w32-2-9-1-release\Pre-built.2\lib\x86\pthreadVSE2.lib
+pthreads-w32-2-9-1-release\Pre-built.2\lib\x86\pthreadVCE2.lib
+
+
+
+---------------------------------------------------------------------------
+
++ copy to c:\Windows\System32\
+
+pthreads-w32-2-9-1-release\Pre-built.2\dll\x86

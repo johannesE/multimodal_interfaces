@@ -16,6 +16,7 @@
     <ClCompile Include="tgaLoader.c" />
     <ClCompile Include="SpeechControl.cpp" />
     <ClCompile Include="KinectAudioStream.cpp" />
+    <ClCompile Include="Socket_TCP_server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap2.h" />
@@ -44,5 +45,6 @@
     <None Include="SpeechBasics-D2D.grxml" />
     <None Include="..\images\config_1.jpg" />
     <None Include="..\images\config_2.jpg" />
+    <None Include="linker additional dependencies.txt" />
   </ItemGroup>
 </Project>

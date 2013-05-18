@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 	int retval;
 	do
 	{
-		retval = send(sock, "vx 1245.65\0", 11, 0);
+		retval = send(sock, "vx 12.65\0", 9, 0);
 		retval = recv(sock, buffer, sizeof(buffer), 0);
 	} 
 	while(retval == SOCKET_ERROR || (unsigned)strlen(buffer)==0 || buffer[0]=='r');  //'r' for "retransmit"
@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 	
 	do
 	{
-		retval = send(sock, "vy 5689.0\0", 10, 0);
+		retval = send(sock, "vy -6.0\0", 8, 0);
 		retval = recv(sock, buffer, sizeof(buffer), 0);
 	} 
 	while(retval == SOCKET_ERROR || (unsigned)strlen(buffer)==0 || buffer[0]=='r');  //'r' for "retransmit"
