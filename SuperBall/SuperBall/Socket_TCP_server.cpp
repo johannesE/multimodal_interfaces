@@ -17,6 +17,8 @@ vy float\0
 
 ra float\0
 
+q____     ('q' followed by at least 4 spaces)
+
 */
 
 
@@ -83,6 +85,7 @@ void* threadsTask( void* ptVoid)
 					fprintf(stderr,"Server: recv() failed: error %d. Disconnecting.\n", WSAGetLastError());
 					closesocket(sockFrom);
 					connected=false;
+					//acceptNewConnections = false;
 				}
 				else
 				{
@@ -95,7 +98,6 @@ void* threadsTask( void* ptVoid)
 					printf("Server: received string is shorter that 4 chars, disconnecting.\n");
 					closesocket(sockFrom);
 					connected=false;
-					acceptNewConnections = false;
 				}
 
 				memcpy( subbuff, &Buffer[3], stringsLength );
@@ -120,6 +122,13 @@ void* threadsTask( void* ptVoid)
 						 printf("Server: update for the radius: %f\n",parameter); 
 						 SuperBall::updateRadius(parameter);
 						 break;
+					}
+					case 'q':
+					{
+						printf("Server: disconnecting and shutting down (no new connections will be established).\n");
+						closesocket(sockFrom);
+						connected=false;
+						acceptNewConnections=false;
 					}
 				}
 
