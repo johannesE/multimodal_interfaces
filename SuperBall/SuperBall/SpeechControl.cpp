@@ -15,7 +15,14 @@ LPCWSTR SpeechControl::GrammarFileName = L"SpeechBasics-D2D.grxml";
 // incompatible with this sample.
 DEFINE_GUID(CLSID_ExpectedRecognizer, 0x495648e7, 0xf7ab, 0x4267, 0x8e, 0x0f, 0xca, 0xfb, 0x7a, 0x33, 0xc1, 0x60);
 
-
+/// <summary>
+/// Entry point for the application
+/// </summary>
+/// <param name="hInstance">handle to the application instance</param>
+/// <param name="hPrevInstance">always 0</param>
+/// <param name="lpCmdLine">command line arguments</param>
+/// <param name="nCmdShow">whether to display minimized, maximized, or normally</param>
+/// <returns>status</returns>
 
 SpeechControl::SpeechControl() : 
 //	m_pD2DFactory(NULL),
@@ -175,7 +182,7 @@ void SpeechControl::ProcessSpeech()
 /// <param name="lParam">additional message data</param>
 /// <returns>result of message processing</returns>
 
-//LRESULT CALLBACK SpeechControl::MessageRouter(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+
 LRESULT CALLBACK SpeechControl::MessageRouter(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     SpeechControl* pThis = NULL;

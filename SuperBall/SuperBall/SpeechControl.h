@@ -31,9 +31,10 @@ class SpeechControl
 public:
 	SpeechControl(void);
 	~SpeechControl(void);
+
 	//void SpeechControl::Run();
 	//static void SpeechControl::start();
-
+	
 
 	static LPCWSTR          GrammarFileName;
 

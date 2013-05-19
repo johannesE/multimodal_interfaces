@@ -201,6 +201,8 @@ void PhidgetManager::start()
 		printf("\nProblem waiting for attachment: %s\n", err);
 
 		printf("\nMove the SuperBall with the the keys a,d,w,s.\n\n");
+		printf("\npress space to stop.\n\n");
+		printf("\npress 'O' to make ball biger, 'P' to make it smaller.\n\n");
 		printf("Press enter to continue\n");
 		getchar();
 		//exit(0);

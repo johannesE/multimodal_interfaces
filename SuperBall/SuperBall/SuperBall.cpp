@@ -14,6 +14,7 @@
 
 #include "PhidgetManager.h"
 #include "SpeechControl.h"
+#include "KinectAudioStream.h"
 
 #include <list>
 #include <typeinfo>
@@ -31,7 +32,7 @@
 
 //Global variables:
 
-double ballSpeed = 1;
+double ballSpeed = 0.5;
 
 
 extern void start_the_Thread_with_the_Socket_TCP_server();
@@ -246,55 +247,7 @@ glutPostRedisplay();
 if(!gameOver) glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0); //we register again this same function to the timer, as it seems to be called only once
 }
 
-void drawSquare1()
-{
-    glColor3fv(BLUE);
-    glBegin(GL_POLYGON);
-        glVertex3f(MOUSEx, MOUSEy,0);
-        glVertex3f(MOUSEx+SIDE, MOUSEy,0);
-        glVertex3f(MOUSEx+SIDE, MOUSEy+SIDE,0);
-        glVertex3f(MOUSEx, MOUSEy+SIDE,0);
-    glEnd();
 
-
-glColor3fv(RED);
-    glBegin(GL_POLYGON);
-        glVertex3f(x, y,0);
-        glVertex3f(x+SIDE, y,0);
-        glVertex3f(x+SIDE, y+SIDE,0);
-        glVertex3f(x, y+SIDE,0);
-    glEnd();
-
-
-time_t timer;
-struct tm y2k;
-long seconds;
-
-y2k.tm_hour = 0; y2k.tm_min = 0; y2k.tm_sec = 0;
-y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
-
-time(&timer); /* get current time; same as: timer = time(NULL) */
-
-seconds = (long) difftime(timer,mktime(&y2k));
-
-int deltaX = seconds%2;
-int deltaY = seconds%3;
-
-if(x>screenWidth - SIDE) minusForDeltaX = true;
-if(x<=0) minusForDeltaX = false;
-if(y>screenHeight - SIDE) minusForDeltaY = true;
-if(y<=0) minusForDeltaY = false;
-
-if(minusForDeltaX) x-=deltaX;
-else x+=deltaX;
-if(minusForDeltaY) y-=deltaY;
-else y+=deltaY;
-
-
-
-
-    glFlush();
-}
 
 void displayTheScore()
 {
@@ -747,6 +700,9 @@ case VK_SPACE:
 	ismovingD = false;
 break;
 
+case 'z':
+
+	break;
 case 'o':
 		if (superBallSRadius >= 	superBallSRadiusMin)
 	{
@@ -801,9 +757,12 @@ exit(0);
 
 }
 
+
 /* called when a mouse button is pressed or released */
 void MouseButton(int button,int state,int x,int y)
+
 {
+
 	
 
 if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
