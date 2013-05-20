@@ -67,8 +67,8 @@ float superBallSRadiusMin = 40;
 float superBallSRadiusMax = 150;
 float superBallSSpeedX = 0.0f;
 float superBallSSpeedY = 0.0f;
-float superBallSAX = 0.0f;
-float superBallSAY = 0.0f;
+double superBallSAX = 0.0;
+double superBallSAY = 0.0;
 GLfloat superBallsColor[3] = {1.0f, 0.5f, 0.0f};
 GLfloat openglClearColor[4] = {0.760784313,0.839215686,0.839215686,1.0};
 GLfloat bombsColor[3] = {0.0f, 0.0f, 0.0f};
@@ -104,7 +104,8 @@ int ButtonWIDTH = 200;
 bool ismovingU, ismovingR, ismovingL, ismovingD;
 
 
-
+bool mouseSuperBallAcceleration = false;
+float mmouseSuperBallDistanceAccelerationDivider = 1000.0f;
 
 
 
@@ -410,6 +411,8 @@ superBallSSpeedX += superBallSAX;
 superBallSSpeedY += superBallSAY;
 superBallSPositionX += superBallSSpeedX;
 superBallSPositionY -= superBallSSpeedY;
+
+
 if(superBallSPositionX+superBallSRadius>screenWidth)
 {
 superBallSPositionX=screenWidth-superBallSRadius;
@@ -458,66 +461,74 @@ itoa((int)(gamesContents->playersScore), gamesContents->playersScoreAsString , 1
 }
 }
 
+
+
+
+
 void display(void)
 {
-if(!gameOver)
-{
-updatePositionsOfObjects();
-collisionsCheckRightNow_gimmeThisGimmeThat();
-}
+	if(!gameOver)
+	{
+		updatePositionsOfObjects();
+		collisionsCheckRightNow_gimmeThisGimmeThat();
+	}
     glClearColor (openglClearColor[0],openglClearColor[1],openglClearColor[2],openglClearColor[3]);
     glClear (GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
 
+	if(mouseSuperBallAcceleration == true)
+	{
+		superBallSAX = ((MOUSEx - superBallSPositionX)/mmouseSuperBallDistanceAccelerationDivider);
+		superBallSAY = (-(MOUSEy - superBallSPositionY)/mmouseSuperBallDistanceAccelerationDivider);
+	}
 
 
 
 
+	if(!gameOver) drawTheBall(superBallSPositionX, superBallSPositionY, superBallSRadius);
 
-if(!gameOver) drawTheBall(superBallSPositionX, superBallSPositionY, superBallSRadius);
+	// binds the texture to any geometry about to be rendered
+	glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, texture_bomb);
 
-// binds the texture to any geometry about to be rendered
-glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texture_bomb);
+	/*
+	glBegin(GL_QUADS);
 
-/*
-glBegin(GL_QUADS);
-
-glTexCoord2f (0.0, 0.0);
-glVertex3f (0.0, 0.0, 0.0);
-glTexCoord2f (1.0, 0.0);
-glVertex3f (100.0, 0.0, 0.0);
-glTexCoord2f (1.0, 1.0);
-glVertex3f (100.0, 100.0, 0.0);
-glTexCoord2f (0.0, 1.0);
-glVertex3f (0.0, 100.0, 0.0);
-glEnd();
-*/
-
-
-
-
-for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
-{
-(*it)->drawIt();
-}
-
-glDisable(GL_TEXTURE_2D);
+	glTexCoord2f (0.0, 0.0);
+	glVertex3f (0.0, 0.0, 0.0);
+	glTexCoord2f (1.0, 0.0);
+	glVertex3f (100.0, 0.0, 0.0);
+	glTexCoord2f (1.0, 1.0);
+	glVertex3f (100.0, 100.0, 0.0);
+	glTexCoord2f (0.0, 1.0);
+	glVertex3f (0.0, 100.0, 0.0);
+	glEnd();
+	*/
 
 
 
 
-for (std::list<Diamond*>::iterator it = gamesContents->diamonds.begin(); it != gamesContents->diamonds.end(); it++)
-{
-(*it)->drawIt();
-}
+	for (std::list<Mine*>::iterator it = gamesContents->mines.begin(); it != gamesContents->mines.end(); it++)
+	{
+	(*it)->drawIt();
+	}
 
-displayTheScore();
+	glDisable(GL_TEXTURE_2D);
 
-if(gameOver) displayGameOver();
 
-glutSwapBuffers();
+
+
+	for (std::list<Diamond*>::iterator it = gamesContents->diamonds.begin(); it != gamesContents->diamonds.end(); it++)
+	{
+	(*it)->drawIt();
+	}
+
+	displayTheScore();
+
+	if(gameOver) displayGameOver();
+
+	glutSwapBuffers();
 }
 
 
@@ -765,23 +776,38 @@ void MouseButton(int button,int state,int x,int y)
 
 	
 
-if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
-{
-printf("play again clicked. Score was: (not yet implemented) \n");
+	if(gameOver && y<ButtonHEIGHT+ButtonY && y>ButtonY && x<ButtonWIDTH+ButtonX && x>ButtonX && state == GLUT_UP)
+	{
+	printf("play again clicked. Score was: (not yet implemented) \n");
 
-ismovingD = false;
-ismovingL = false;
-ismovingR = false;
-ismovingU = false;
-
-
-startgame();
-gameOver = false;
-glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
-
-}
+	ismovingD = false;
+	ismovingL = false;
+	ismovingR = false;
+	ismovingU = false;
 
 
+	startgame();
+	gameOver = false;
+	glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjects, 0);
+
+	}
+
+
+
+    if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+	{
+		if(mouseSuperBallAcceleration == true) 
+		{
+			mouseSuperBallAcceleration = false;
+			superBallSAX=0;
+			superBallSAY=0;
+		}
+
+		else 
+		{
+			mouseSuperBallAcceleration = true;
+		}
+	}
 }
 
 
@@ -789,10 +815,10 @@ glutTimerFunc(milliSecondsIntervalForSpawningNewSpaceObjects, spawnNewSpaceObjec
 /* called when the mouse moves */
 void MouseMove(int x,int y)
 {
-/* Pass information about the position of the mouse to pui */
-	
-
-
+	if(mouseSuperBallAcceleration == true)
+	{
+		MOUSEx=x; MOUSEy=y;
+	}
 }
 
 
