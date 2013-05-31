@@ -1,13 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual C++ Express 2010
+# Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuperBall", "SuperBall\SuperBall.vcxproj", "{4B6795B4-EF21-43AA-ABD6-5B8F8C01B625}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RPC_server", "RPC_server\RPC_server.vcxproj", "{E016918E-F40D-431E-9CC5-4DF28AAD30C0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Socket_TCP_server", "Socket_TCP_server\Socket_TCP_server.vcxproj", "{71D5F095-6CB2-4E29-9375-81A818B605A2}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Socket_TCP_client1", "Socket_TCP_client1\Socket_TCP_client1.vcxproj", "{9D0D65FF-445D-4575-8145-056624520553}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,24 +19,6 @@ Global
 		{4B6795B4-EF21-43AA-ABD6-5B8F8C01B625}.Release|Win32.Build.0 = Release|Win32
 		{4B6795B4-EF21-43AA-ABD6-5B8F8C01B625}.Release|x64.ActiveCfg = Release|x64
 		{4B6795B4-EF21-43AA-ABD6-5B8F8C01B625}.Release|x64.Build.0 = Release|x64
-		{E016918E-F40D-431E-9CC5-4DF28AAD30C0}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E016918E-F40D-431E-9CC5-4DF28AAD30C0}.Debug|Win32.Build.0 = Debug|Win32
-		{E016918E-F40D-431E-9CC5-4DF28AAD30C0}.Debug|x64.ActiveCfg = Debug|Win32
-		{E016918E-F40D-431E-9CC5-4DF28AAD30C0}.Release|Win32.ActiveCfg = Release|Win32
-		{E016918E-F40D-431E-9CC5-4DF28AAD30C0}.Release|Win32.Build.0 = Release|Win32
-		{E016918E-F40D-431E-9CC5-4DF28AAD30C0}.Release|x64.ActiveCfg = Release|Win32
-		{71D5F095-6CB2-4E29-9375-81A818B605A2}.Debug|Win32.ActiveCfg = Debug|Win32
-		{71D5F095-6CB2-4E29-9375-81A818B605A2}.Debug|Win32.Build.0 = Debug|Win32
-		{71D5F095-6CB2-4E29-9375-81A818B605A2}.Debug|x64.ActiveCfg = Debug|Win32
-		{71D5F095-6CB2-4E29-9375-81A818B605A2}.Release|Win32.ActiveCfg = Release|Win32
-		{71D5F095-6CB2-4E29-9375-81A818B605A2}.Release|Win32.Build.0 = Release|Win32
-		{71D5F095-6CB2-4E29-9375-81A818B605A2}.Release|x64.ActiveCfg = Release|Win32
-		{9D0D65FF-445D-4575-8145-056624520553}.Debug|Win32.ActiveCfg = Debug|Win32
-		{9D0D65FF-445D-4575-8145-056624520553}.Debug|Win32.Build.0 = Debug|Win32
-		{9D0D65FF-445D-4575-8145-056624520553}.Debug|x64.ActiveCfg = Debug|Win32
-		{9D0D65FF-445D-4575-8145-056624520553}.Release|Win32.ActiveCfg = Release|Win32
-		{9D0D65FF-445D-4575-8145-056624520553}.Release|Win32.Build.0 = Release|Win32
-		{9D0D65FF-445D-4575-8145-056624520553}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
